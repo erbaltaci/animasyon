@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Checkbox Test</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -30,16 +30,19 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .options {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .options label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
         }
         button {
             margin: 5px;
             padding: 10px 20px;
             font-size: 16px;
-            width: 100%;
         }
         .feedback {
             margin-top: 20px;
@@ -52,88 +55,55 @@
 
     <div class="container">
         <div>
-            <div class="question" id="question">1. Anahtarı Kazanman İçin Soruya Doğru Cevap Vermelisin</div>
-            <div class="buttons">
-                <button onclick="checkAnswer(0)" id="btn1">Seçenek 1</button>
-                <button onclick="checkAnswer(1)" id="btn2">Seçenek 2</button>
-                <button onclick="checkAnswer(2)" id="btn3">Seçenek 3</button>
-                <button onclick="checkAnswer(3)" id="btn4">Seçenek 4</button>
+            <div class="question" id="question">Hadi Son Adımı da Tamamla ve Hazineye Ulaş</div>
+            <div class="options">
+                <label><input type="checkbox" id="option1"> •	Bilgiye kolayca ve güvenli bir şekilde ulaşabilir.</label>
+                <label><input type="checkbox" id="option2"> Seçenek 2</label>
+                <label><input type="checkbox" id="option3"> •	Dijital ortamda eriştiği kaynakların güvenilir olup olmadığına karar verebilir ve bu kaynakları eleştirel bir şekilde değerlendirebilir.</label>
+                <label><input type="checkbox" id="option4"> Seçenek 4</label>
+                <label><input type="checkbox" id="option5"> •	Dijital araçları kullanarak farklı içerikler üretebilir.</label>
+                <label><input type="checkbox" id="option6"> •	Dijital ortamlarda güvenlik bilincine sahiptir.</label>
+                <label><input type="checkbox" id="option7"> Seçenek 4</label>
+                <label><input type="checkbox" id="option8"> •	Dijital ortamda güvenli ve sağlıklı iletişim becerisine sahiptir.</label>
+                <label><input type="checkbox" id="option9"> •	Sanal zorbalıktan hem kendini koruyabilir hem de azaltılmasını sağlayabilir.</label>
             </div>
+            <button onclick="checkAnswers()">Cevapları Kontrol Et</button>
             <div class="feedback" id="feedback"></div>
         </div>
     </div>
 
     <script>
-        const questions = [
-            {
-                question: "1. Anahtarı Kazanman İçin Soruya Doğru Cevap Vermelisin",
-                answers: [
-                    "Eğlence: Eğlenceli içeriklere ulaşmak (Yanlış)",
-                    "Doğru cevap: Eğlenceli içeriklere ulaşmak",
-                    "Yanıt 3",
-                    "Yanıt 4"
-                ],
-                correctAnswer: 1
-            },
-            {
-                question: "2. Doğru cevabı bulman gerekiyor!",
-                answers: [
-                    "Yanıt 1",
-                    "Yanıt 2",
-                    "Yanıt 3 (Doğru)",
-                    "Yanıt 4"
-                ],
-                correctAnswer: 2
-            },
-            {
-                question: "3. Bu son soru!",
-                answers: [
-                    "Yanıt 1 (Yanlış)",
-                    "Yanıt 2",
-                    "Doğru cevap: Eğlenceli içeriklere ulaşmak",
-                    "Yanıt 4"
-                ],
-                correctAnswer: 2
-            }
-        ];
-
-        let currentQuestionIndex = 0;
-
-        function loadQuestion() {
-            const currentQuestion = questions[currentQuestionIndex];
-            document.getElementById("question").textContent = currentQuestion.question;
-            document.getElementById("btn1").textContent = currentQuestion.answers[0];
-            document.getElementById("btn2").textContent = currentQuestion.answers[1];
-            document.getElementById("btn3").textContent = currentQuestion.answers[2];
-            document.getElementById("btn4").textContent = currentQuestion.answers[3];
-            document.getElementById("feedback").textContent = ''; // Geri bildirimi temizle
-        }
-
-        function checkAnswer(selectedAnswerIndex) {
-            const currentQuestion = questions[currentQuestionIndex];
-
-            if (selectedAnswerIndex === currentQuestion.correctAnswer) {
-                document.getElementById("feedback").textContent = "Tebrikler! Doğru cevabı seçtiniz.";
-                document.getElementById("feedback").style.color = "green";
-                
-                // Bir sonraki soruya geç
-                currentQuestionIndex++;
-                
-                // Eğer tüm sorular bitti ise testin sonuna ulaşıldığını bildir
-                if (currentQuestionIndex < questions.length) {
-                    setTimeout(loadQuestion, 1000); // 1 saniye sonra sonraki soruyu yükle
-                } else {
-                    document.getElementById("feedback").textContent = "Tüm anahtarları başarıyla topladın!";
-                    
-                }
+        const correctAnswers = [0,2,4,5,7,8];  // Doğru olan seçeneklerin indeksleri (0 tabanlı indeks)
+        
+        function checkAnswers() {
+            const selectedAnswers = [];
+            
+            if (document.getElementById('option1').checked) selectedAnswers.push(0);
+            if (document.getElementById('option2').checked) selectedAnswers.push(1); // Yanlış bir seçenek
+            if (document.getElementById('option3').checked) selectedAnswers.push(2);
+            if (document.getElementById('option4').checked) selectedAnswers.push(3); // Yanlış bir seçenek
+            if (document.getElementById('option5').checked) selectedAnswers.push(4);
+            if (document.getElementById('option6').checked) selectedAnswers.push(5);
+            if (document.getElementById('option7').checked) selectedAnswers.push(6); // Yanlış bir seçenek
+            if (document.getElementById('option8').checked) selectedAnswers.push(7);
+            if (document.getElementById('option9').checked) selectedAnswers.push(8);
+            
+            if (arraysEqual(selectedAnswers, correctAnswers)) {
+                document.getElementById('feedback').textContent = "Tebrikler! Doğru cevapları seçtiniz.";
+                document.getElementById('feedback').style.color = "green";
+                // Doğru cevaplar seçildiğinde sayfayı yönlendirme
+                setTimeout(function() {
+                    window.location.href = 'lastScene1.html'; // Yönlendirilmek istenilen sayfanın yolu
+                }, 2000); // 2 saniye sonra yönlendirilecek
             } else {
-                document.getElementById("feedback").textContent = "Yanlış cevap, tekrar deneyin.";
-                document.getElementById("feedback").style.color = "red";
+                document.getElementById('feedback').textContent = "Yanlış seçenekler var, tekrar deneyin.";
+                document.getElementById('feedback').style.color = "red";
             }
         }
 
-        // Sayfa yüklendiğinde ilk soruyu getir
-        window.onload = loadQuestion;
+        function arraysEqual(arr1, arr2) {
+            return JSON.stringify(arr1.sort()) === JSON.stringify(arr2.sort());
+        }
     </script>
 
 </body>

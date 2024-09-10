@@ -46,6 +46,22 @@
             font-size: 18px;
             font-weight: bold;
         }
+        #nextPageButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            display: none;
+        }
+        #image-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .small-image {
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -60,6 +76,8 @@
                 <button onclick="checkAnswer(3)" id="btn4">Seçenek 4</button>
             </div>
             <div class="feedback" id="feedback"></div>
+            <button id="nextPageButton" onclick="goToNextPage()">Sonraki Sayfaya Geç</button>
+            <div id="image-container"></div> <!-- PNG'lerin ekleneceği alan -->
         </div>
     </div>
 
@@ -107,6 +125,7 @@
             document.getElementById("btn3").textContent = currentQuestion.answers[2];
             document.getElementById("btn4").textContent = currentQuestion.answers[3];
             document.getElementById("feedback").textContent = ''; // Geri bildirimi temizle
+            document.getElementById("nextPageButton").style.display = "none"; // Butonu gizle
         }
 
         function checkAnswer(selectedAnswerIndex) {
@@ -116,6 +135,9 @@
                 document.getElementById("feedback").textContent = "Tebrikler! Doğru cevabı seçtiniz.";
                 document.getElementById("feedback").style.color = "green";
                 
+                // Doğru cevaptan sonra küçük PNG ekle
+                addSmallImage();
+
                 // Bir sonraki soruya geç
                 currentQuestionIndex++;
                 
@@ -124,12 +146,25 @@
                     setTimeout(loadQuestion, 1000); // 1 saniye sonra sonraki soruyu yükle
                 } else {
                     document.getElementById("feedback").textContent = "Tüm anahtarları başarıyla topladın!";
-                    
+                    document.getElementById("nextPageButton").style.display = "block"; // Sonraki sayfa butonunu göster
                 }
             } else {
                 document.getElementById("feedback").textContent = "Yanlış cevap, tekrar deneyin.";
                 document.getElementById("feedback").style.color = "red";
             }
+        }
+
+        // Küçük PNG eklemek için fonksiyon
+        function addSmallImage() {
+            const imgContainer = document.getElementById('image-container');
+            const img = document.createElement('img');
+            img.src = 'img/key.png'; // Eklenecek küçük PNG'nin yolu
+            img.classList.add('small-image');
+            imgContainer.appendChild(img); // Yeni görüntüyü ekle
+        }
+
+        function goToNextPage() {
+            window.location.href = 'scene-1.2.html'; // Yönlendirme yapılacak sayfanın URL'si
         }
 
         // Sayfa yüklendiğinde ilk soruyu getir
