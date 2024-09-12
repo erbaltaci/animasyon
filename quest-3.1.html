@@ -15,7 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('img/peri.svg');
+            background-image: url('img/kanca.svg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -89,22 +89,27 @@
         <p>Aşağıdaki boşluklara doğru kelimeleri sürükleyip bırakın:</p>
 
         <!-- Cümleler ve boşluklar -->
-        <div class="puzzle-sentence">• Çevrimiçi paylaşımlara "<span id="slot1" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" et.</div>
-        <div class="puzzle-sentence">• "<span id="slot2" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" dijital ortamlarda paylaşma.</div>
-        <div class="puzzle-sentence">• Güçlü "<span id="slot3" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" oluştur ve "2 aşamalı" şifreleme tekniğini kullan.</div>
-        <div class="puzzle-sentence">• Herkese açık olan yerlerde "<span id="slot4" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" kullanma.</div>
-        <div class="puzzle-sentence">• Bilinmeyen kişilerden gelen "<span id="slot5" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" asla tıklama.</div>
-        <div class="puzzle-sentence">• İnternetten "<span id="slot6" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" yaparken sitelerin ve ödeme yöntemlerinin "<span id="slot7" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" olmasına dikkat et.</div>
-
+        <div class="puzzle-sentence">• Tahmin edilmesi  "<span id="slot1" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" oluşturmalıyız..</div>
+        <div class="puzzle-sentence">• Şifrelerimiz "<span id="slot2" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" içermelidir.</div>
+        <div class="puzzle-sentence">• Şifrelerimiz en az  "<span id="slot3" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" uzunluğunda olmalıdır." 
+        </div>
+        <div class="puzzle-sentence">• Şifrelerimizi bir  "<span id="slot4" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" saklamalıyız.</div>
+        <div class="puzzle-sentence">• Oluşturduğumuz bir şifreyi her yerde"<span id="slot5" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>"</div>
+        <div class="puzzle-sentence">• "<span id="slot6" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" olan Wi-Fi ağlarına bağlanmamalıyız.  "</div>
+        <div class="puzzle-sentence">• Cihazlarımıza  "<span id="slot7" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" Koymalıyız.</div>
+        <div class="puzzle-sentence">• Şifrelerimizi  "<span id="slot8" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>"</div>
+        
         <!-- Karışık kelimeler -->
         <div id="words" class="word-box">
-            <div id="word1" class="word" draggable="true" ondragstart="drag(event)">alışveriş</div>
-            <div id="word2" class="word" draggable="true" ondragstart="drag(event)">kişisel bilgileri</div>
-            <div id="word3" class="word" draggable="true" ondragstart="drag(event)">e-postalara</div>
-            <div id="word4" class="word" draggable="true" ondragstart="drag(event)">Wi-Fi bağlantılarını</div>
-            <div id="word5" class="word" draggable="true" ondragstart="drag(event)">şifreler</div>
-            <div id="word6" class="word" draggable="true" ondragstart="drag(event)">dikkat</div>
-            <div id="word7" class="word" draggable="true" ondragstart="drag(event)">güvenilir</div>
+            <div id="word1" class="word" draggable="true" ondragstart="drag(event)">8 karakter</div>
+            <div id="word2" class="word" draggable="true" ondragstart="drag(event)">kullanmamalıyız</div>
+            <div id="word3" class="word" draggable="true" ondragstart="drag(event)">zor ve güçlü şifreler</div>
+            <div id="word4" class="word" draggable="true" ondragstart="drag(event)">tuş kilidi ve  güçlü şifreler</div>
+            
+            <div id="word5" class="word" draggable="true" ondragstart="drag(event)">Şifresiz</div>
+            <div id="word6" class="word" draggable="true" ondragstart="drag(event)">paylaşmamalıyız</div>
+            <div id="word7" class="word" draggable="true" ondragstart="drag(event)">büyük harfler, küçük harfler, sayılar ve semboller</div>
+            <div id="word8" class="word" draggable="true" ondragstart="drag(event)">şifre yöneticisinde </div>
         </div>
 
         <!-- Kontrol butonu -->
@@ -133,17 +138,19 @@
 
         // Cümlelerin doğruluğunu kontrol et
         function checkSolution() {
-            var slot1 = document.getElementById('slot1').innerText.trim();
-            var slot2 = document.getElementById('slot2').innerText.trim();
-            var slot3 = document.getElementById('slot3').innerText.trim();
-            var slot4 = document.getElementById('slot4').innerText.trim();
-            var slot5 = document.getElementById('slot5').innerText.trim();
-            var slot6 = document.getElementById('slot6').innerText.trim();
-            var slot7 = document.getElementById('slot7').innerText.trim();
+            var slot1 = document.getElementById('slot1').textContent.trim();
+            var slot2 = document.getElementById('slot2').textContent.trim();
+            var slot3 = document.getElementById('slot3').textContent.trim();
+            var slot4 = document.getElementById('slot4').textContent.trim();
+            var slot5 = document.getElementById('slot5').textContent.trim();
+            var slot6 = document.getElementById('slot6').textContent.trim();
+            var slot7 = document.getElementById('slot7').textContent.trim();
+            var slot8 = document.getElementById('slot8').textContent.trim();
+
 
             var feedback = document.getElementById('feedback');
 
-            if (slot1 === "dikkat" && slot2 === "kişisel bilgileri" && slot3 === "şifreler" && slot4 === "Wi-Fi bağlantılarını" && slot5 === "e-postalara" && slot6 === "alışveriş" && slot7 === "güvenilir") {
+            if (slot1 === "zor ve güçlü şifreler" && slot2 === "büyük harfler, küçük harfler, sayılar ve semboller" && slot3 === "8 karakter" && slot4 === "şifre yöneticisinde" && slot5 === "kullanmamalıyız" && slot6 === "Şifresiz" && slot7 === "tuş kilidi ve  güçlü şifreler" && slot8 === "paylaşmamalıyız") {
                 feedback.textContent = "Tebrikler! Tüm cümleleri doğru tamamladınız.";
                 feedback.style.color = "green";
                 setTimeout(function() {
