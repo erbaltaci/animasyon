@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İki Aşamalı Bulmaca</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('img/kerem.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .answers {
+            margin-bottom: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #drag-drop-section {
+            margin-top: 30px;
+        }
+        .pair-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .word {
+            width: 120px;
+            height: 40px;
+            background-color: #ffeb3b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #333;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .drop-box {
+            width: 150px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border: 2px dashed #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- İkinci soru (Sürükle bırak) -->
+    <div class="container" id="drag-drop-section">
+        <h1 class="question">Doğru kelimeleri eşleştirin:</h1>
+
+        <div class="pair-container">
+            <div class="word">Güvenilir</div>
+            <div class="drop-box" id="drop1" ondrop="drop(event, 'Platform')" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="pair-container">
+            <div class="word">Lisanslı</div>
+            <div class="drop-box" id="drop2" ondrop="drop(event, 'Oyunlar')" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="pair-container">
+            <div class="word">Antivirüs</div>
+            <div class="drop-box" id="drop3" ondrop="drop(event, 'Yazılımı')" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="pair-container">
+            <div class="word">Güvenlik</div>
+            <div class="drop-box" id="drop4" ondrop="drop(event, 'Duvarı')" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="pair-container">
+            <div class="word">Yaş</div>
+            <div class="drop-box" id="drop5" ondrop="drop(event, 'Etiketleri')" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="pair-container">
+            <div class="word">Avatar</div>
+            <div class="drop-box" id="drop6" ondrop="drop(event, 'Resmi')" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="pair-container">
+            <div class="word">Takma</div>
+            <div class="drop-box" id="drop7" ondrop="drop(event, 'İsim')" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="pair-container">
+            <div class="word">Özel bilgilerimizi</div>
+            <div class="drop-box" id="drop8" ondrop="drop(event, 'Paylaşmama')" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <!-- Sürüklenebilir kelimeler -->
+        <div class="word-box">
+            <div id="Yazılımı" class="word" draggable="true" ondragstart="drag(event)">Yazılımı</div>
+            <div id="İsim" class="word" draggable="true" ondragstart="drag(event)">İsim</div>
+            <div id="Platform" class="word" draggable="true" ondragstart="drag(event)">Platform</div>
+            <div id="Duvarı" class="word" draggable="true" ondragstart="drag(event)">Duvarı</div>
+            <div id="Paylaşmama" class="word" draggable="true" ondragstart="drag(event)">Paylaşmama</div>
+            <div id="Resmi" class="word" draggable="true" ondragstart="drag(event)">Resmi</div>
+            <div id="Oyunlar" class="word" draggable="true" ondragstart="drag(event)">Oyunlar</div>
+            <div id="Etiketleri" class="word" draggable="true" ondragstart="drag(event)">Etiketleri</div>
+        </div>
+
+        <div id="second-feedback" class="feedback"></div>
+        <button class="btn btn-success" onclick="checkPairs()">Eşleştir ve Kontrol Et</button>
+    </div>
+
+    <script>
+        // Sürükle-bırak işlemleri
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev, word) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            if (data === word) {
+                ev.target.textContent = word;
+                document.getElementById(data).style.display = 'none'; // Kelimeyi sürüklendikten sonra gizle
+            }
+        }
+
+        // Eşleşmeleri kontrol et
+        function checkPairs() {
+            const pairs = {
+                drop1: 'Platform',
+                drop2: 'Oyunlar',
+                drop3: 'Yazılımı',
+                drop4: 'Duvarı',
+                drop5: 'Etiketleri',
+                drop6: 'Resmi',
+                drop7: 'İsim',
+                drop8: 'Paylaşmama'
+            };
+
+            let isCorrect = true;
+
+            for (let dropId in pairs) {
+                const dropBox = document.getElementById(dropId).textContent.trim();
+                if (dropBox !== pairs[dropId]) {
+                    isCorrect = false;
+                    break;
+                }
+            }
+
+            const feedback = document.getElementById('second-feedback');
+            if (isCorrect) {
+                feedback.textContent = "Tebrikler! Tüm kelimeleri doğru eşleştirdiniz.";
+                feedback.style.color = "green";
+                setTimeout(function() {
+                    window.location.href = 'lastScene5.html'; // Doğru sayfaya yönlendirin
+                }, 2000);
+            } else {
+                feedback.textContent = "Bazı kelimeler yanlış eşleştirildi. Tekrar deneyin!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
