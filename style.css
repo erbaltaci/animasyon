@@ -1,0 +1,72 @@
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+/* Yan menü içindeki linkler */
+.side-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Linklerin üzerine gelindiğinde */
+.side-menu a:hover {
+    color: #f1f1f1;
+}
+
+/* Yan menüyü kapatmak için 'x' butonu */
+.side-menu .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #818181;
+}
+
+/* Menü butonu (ekranın üst kısmında yer alacak) */
+.menu-btn {
+    font-size: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    color: #111;
+    z-index: 2;
+}
+
+/* Ana içerik alanı */
+.main-content {
+    margin-left: 20px;
+    font-size: 20px;
+    padding: 20px;
+}
+
+/* Yan menü açıkken genişlik */
+.side-menu-open {
+    width: 250px;
+}
+3. JavaScript (Fonksiyonlar - script.js)
+javascript
+Kodu kopyala
+// Yan menüyü açma fonksiyonu
+function openMenu() {
+    document.getElementById("sideMenu").style.width = "250px";
+}
+
+// Yan menüyü kapatma fonksiyonu
+function closeMenu() {
+    document.getElementById("sideMenu").style.width = "0";
+}
