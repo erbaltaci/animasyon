@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş-1</title>
+    <style>
+        /* Sayfanın ortalanması ve boşlukların ayarlanması */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace; /* Daktilo efekti için uygun font */
+            background-color: #f4f4f4;
+        }
+
+        /* Metin kutusu ve kenar boşlukları */
+        .typewriter-container {
+            width: 100%;
+            max-width: 1200px; /* Genişlik sınırı */
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Daktilo efekti */
+        .typewriter-text {
+            display: inline-block;
+            white-space: pre-wrap; /* Metin uzun olduğunda alt satıra geçmesi için */
+            overflow: hidden;
+            border-right: 3px solid black; /* İmleç efekti */
+            font-size: 24px;
+        }
+
+        /* İmleç efekti (yanıp sönme) */
+        @keyframes blink {
+            0% { border-right-color: black; }
+            50% { border-right-color: transparent; }
+            100% { border-right-color: black; }
+        }
+
+        /* Daktilo yazısı */
+        .typewriter-text.typing::after {
+            content: "";
+            animation: blink 0.3s step-end infinite;
+        }
+
+        /* Buton stili */
+        .button-container {
+            position: fixed; /* Sabit konum */
+            bottom: 20px; /* Alt kenardan 20px */
+            left: 50%; /* Ortala */
+            transform: translateX(-50%); /* Tam merkezde */
+            display: flex; /* Butonları yan yana dizmek için */
+            gap: 20px; /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button, .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover, .gec:hover {
+            background-color: #555;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="typewriter-container">
+        <div id="typewriter" class="typewriter-text"></div>
+        <div class="button-container">
+            <!-- İki buton burada yer alacak -->
+            <button class="next-button" onclick="goToScene()">Senaryoya Geç</button>
+            <button class="next-button" onclick="nextPage()">Sonraki Sayfa</button>
+        </div>
+    </div>
+    
+    <script>
+        // Metinleriniz burada tanımlanacak
+        const texts = [
+    "SENARYO TABANLI BULMACALAR İLE YAPILAN DİJİTAL ORTAM GİZLİLİK OKURYAZARLIĞI EĞİTİMİNİN ÇOCUKLARDA ÖZERKLİK, KARAR VERME VE MAHREMİYET BİLİNCİNE ETKİSİ",
+    "OTURUM 1: MERHABA DİJİTAL DÜNYA! <br>AMAÇ: Dijital ortam gizlilik okuryazarlığı kavramının öğrenilmesi. <br><br> KONU İÇERİKLERİ: <br><br><br>•Dijital ortam tanımını öğrenelim.<br><br>•Dijital ortam gizlilik okuryazarlığı kavramı nedir?<br><br>•Dijital ortam gizlilik okuryazarlığın temel kavramları ve adımları nedir?<br><br>•Nasıl dijital ortam gizlilik okuryazarı olabilirim?",
+    "İnternet ile hayatımızın her alanına girerek her türlü bilgiye erişmemizi sağlayan bir iletişim aracı olmuştur. İnternete erişebilmek için şu şartların sağlanması gerekir: <br>1.Kablosuz veya fiziksel bağlantıları kullanan ağlar üzerinden bağlantı sağlayan teknolojik altyapılar ve <br>2.Mobil teknolojiler aracılığıyla veya ağa bağlanabilen cihazlar.<br><br>İnternet ortamı bizlere;<br>•Yeni bilgiler öğrenmek, <br>•Araştırmalar yapmak,<br>•Ödevlerimiz için çalışmalar yapmak,<br>•İçerikler üretmek,<br>•Farklı alanları, fikirleri ve bilgileri keşfetmek gibi birçok fırsat sunmaktadır.<br><br>Aynı zamanda<br>•Video ve film izlemek,<br>•Oyun oynamak,<br>•<br>Arkadaşlarımızla mesajlaşmak, görüntülü konuşmak ve sohbet etmek<br>•Alışveriş yapmak gibi birçok eğlenceli aktivitede sunmaktadır.<br>İnternetin tüm bu öğretici ve eğlenceli fırsatlarının yanında görünmeyen, tehlikeli ve riskli bir arka planı ve olumsuz bir karşılığı olabilir. Bu görünmeyen riskleri önceden anlayabilmek, interneti ve dijital ortamları en iyi şekilde kullanabilmek için gerekli olan beceri kazanmamız ve gizlilik okuryazarı olmamız gereklidir. Ayrıca diğer internet kullanıcılarına karşıda sorumluluklarımızı bilmemiz gerekir.",
+    "Dijital ortam gizlilik okuryazarlığı, teknolojinin bizlere sunduğu fırsatları değerlendirirken aynı zamanda riskleri belirleme, kendini koruyabilmek için kararlar alma, dijital dünyayı tanıma ve imkanlarından en iyi şekilde yararlanabilme becerisidir.<br><br>Bu beceriler kısaca şunlardır;<br><br>Çevrimiçi olarak bulunan bilgileri arama, değerlendirme ve yönetme,<br>Çevrimiçi etkileşimde bulunma, paylaşım ve iş birliği yapma, <br>İçerik geliştirme ve oluşturma,<br>Güvenlik ve koruma özelliklerini kullanabilme,<br>Karşılaşılan sorunları çözme ve yaratıcı olma.",
+    "Dijital Ortam Gizlilik Okuryazarlığın Temel Kavramları Nedir?<br>1.Dijital ortam bir ağa bağlı olmalıdır<br>Dijital ortamda tek yönlü bağlantı yoktur. Tüm bireyler her şeyle bağlantı kurabilir, içerik üretip yayınlayabilir ve bunu herkes izleyebilir.<br>2.Dijital ortam kalıcıdır, aranabilir ve paylaşılabilirdir<br>Dijital ortamda olan tüm veriler kalıcıdır, bir yerde depolanıp saklanır ve istenildiği zaman aranarak ulaşılabilir.<br>3. Dijital ortamın bilinmeyen ve beklenmedik izleyicileri vardır<br>Ağlarla bağlantılı dijital ortamda paylaştıklarımız yabancı kişiler tarafından görülebilir.<br>4.Dijital ortam deneyimleri gerçektir ancak her zaman gerçek hissettirmezDijital ortamlar, etkileşim içerdiği için çevrimiçi olaylara karşı gerçekçi tepkiler verebiliriz. Ancak başkalarının ne hissettiğini tam olarak anlayamayız. Ayrıca bizim neler hissettiğimizde tam olarak anlaşılamaz.<br><br5.Dijital ortamı kullanırken nasıl tepki verdiğimiz ve nasıl davrandığımız, bu ortamları oluşturan kişilerin ön yargılarından ve varsayımlarından etkilenir. Dijital ortamlar bizim olaya nasıl baktığımızı ve tepkilerimizi etkileyebilir ve de değiştirebilir.",
+    "Dijital Okuryazarlık Adımları Nelerdir?<br><br>1.Adım Beceri: kendini eğitme ve becerilerini artırma<br>2.Adım Korunma: kişisel verilerini ve kendini koruma<br>3.Adım Saygı: dijital ortamları kullanma ve faydalanma, kullanırken başka kimliklere, eserlere ve ortamlara saygı duyma <br><br>Nasıl Dijital Ortam Gizlilik Okuryazarı Olabilirim?<br>1.Güvenlik becerilerine sahip olarak<br>Riskleri anlayabilmeli, cihazları, verileri ve mahremiyetimizi koruyabilmeliyiz. Güvenliğimize ve mahremiyetimize yönelik riskler de dahil olmak üzere çevrimiçi ortamda karşılaşabileceğimiz riskleri anlama konusunda gerekli beceri ve yeteneklere sahip olmalıyız. Böylece risklerden kaçınmak ve uygun önlemleri almak için uygun stratejileri kullanabilir ve gerektiğinde destek alabiliriz. Ayrıca cihazlarımızı virüslerden, yetkisiz veri erişiminden ve gizlilik ihlallerinden korumak için de teknik becerilere sahip olmamız önemlidir.<br>2.Anlama becerilerine sahip olarak <br>Eleştirel düşünme ve problem çözme yeteneğimizi geliştirmeliyiz. Bilgi aramanın yanı sıra farklı veri kaynaklarını karşılaştırıp analiz edebilmeliyiz. Bilgiyi güvenilirlik ve doğruluk açısından eleştirel olarak değerlendirmeye olanak tanıyan becerilere sahip olmamız gereklidir. Buna ticari içeriği ve ticari olmayan içeriği ayırt etmemizi sağlayacak becerilerimiz de dahildir.<br>3.Sosyal becerilerimizi geliştirerek Sosyal açıdan iletişim ve etkileşim becerilerimizin gelişmiş olması gerekir. Diğer internet kullanıcılarıyla olumlu, ilgi çekici ve işbirlikçi bir şekilde iletişim kurmaya ve etkileşimde bulunmaya yardımcı olacak becerilere sahip olmayız. <br>4.İçerik oluşturma ve katılım becerilerine sahip olarak Farklı formatlarda dijital içerikler oluşturup düzenlemelerini yapabilme ve dijital platformlar aracılığıyla kendimizi ifade etme yeteneğine sahip olmamız gerekir.",
+    "Yine içerikler (metinler, resimler, videolar, filmler) oluşturarak bizi etkileyen konularda tartışmalara katılabilmemiz gerekir.<br><br>Sonuç olarak iyi bir gizlilik okuryazarı;<br>•Bilgiye kolayca ve güvenli bir şekilde ulaşabilir.<br>•Dijital ortamda eriştiği kaynakların güvenilir olup olmadığına karar verebilir ve bu kaynakları eleştirel bir şekilde değerlendirebilir.<br>•Dijital araçları kullanarak farklı içerikler üretebilir.<br>•Dijital ortamlarda güvenlik bilincine sahiptir.<br>•Dijital ortamda güvenli ve sağlıklı iletişim becerisine sahiptir.<br>•Sanal zorbalıktan hem kendini koruyabilir hem de azaltılmasını sağlayabilir."
+
+
+];
+
+let currentIndex = 0; // Mevcut metin indeksi
+let charIndex = 0;    // Yazılacak karakter indeksi
+const typingSpeed = 20; // Harf yazma hızı (ms)
+
+// Daktilo efektini çalıştıran fonksiyon
+function typeWriterEffect() {
+    const typewriterElement = document.getElementById('typewriter');
+    const currentText = texts[currentIndex];
+    
+    // HTML etiketlerini işlemek için karakterleri tek tek değil, doğrudan tüm HTML olarak ele alıyoruz
+    if (charIndex < currentText.length) {
+        // Metnin bir parçasını innerHTML'e ekleriz, bu sayede HTML etiketleri de işlenir
+        typewriterElement.innerHTML = currentText.slice(0, charIndex + 1);
+        charIndex++;
+        setTimeout(typeWriterEffect, typingSpeed);
+    } else {
+        // Metin tamamlandı, imleç yanıp sönme efekti
+        typewriterElement.classList.add('typing');
+    }
+
+}
+ // Sayfayı yönlendirme fonksiyonu
+ function goToScene() {
+            window.location.href = 'scene-1.1.html'; // Hedef sayfa
+ }
+
+// Sayfa değişim fonksiyonu
+function nextPage() {
+    currentIndex++;
+    if (currentIndex < texts.length) {
+        charIndex = 0; // Karakter indeksi sıfırlanır
+        document.getElementById('typewriter').classList.remove('typing');
+        document.getElementById('typewriter').innerHTML = ''; // Önceki metin temizlenir
+        typeWriterEffect(); // Yeni metin yazılmaya başlar
+    } else {
+       
+        
+    }
+}
+
+// İlk metni başlat
+window.onload = function() {
+    typeWriterEffect();
+};
+
+
+    </script>
+
+</body>
+</html>

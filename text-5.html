@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş-2</title>
+    <style>
+        /* Sayfanın ortalanması ve boşlukların ayarlanması */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            /* Daktilo efekti için uygun font */
+            background-color: #f4f4f4;
+        }
+
+        /* Metin kutusu ve kenar boşlukları */
+        .typewriter-container {
+            width: 100%;
+            max-width: 1200px;
+            /* Genişlik sınırı */
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Daktilo efekti */
+        .typewriter-text {
+            display: inline-block;
+            white-space: pre-wrap;
+            /* Metin uzun olduğunda alt satıra geçmesi için */
+            overflow: hidden;
+            border-right: 3px solid black;
+            /* İmleç efekti */
+            font-size: 24px;
+        }
+
+        /* İmleç efekti (yanıp sönme) */
+        @keyframes blink {
+            0% {
+                border-right-color: black;
+            }
+
+            50% {
+                border-right-color: transparent;
+            }
+
+            100% {
+                border-right-color: black;
+            }
+        }
+
+        /* Daktilo yazısı */
+        .typewriter-text.typing::after {
+            content: "";
+            animation: blink 0.3s step-end infinite;
+        }
+
+        /* Buton stili */
+        .button-container {
+            position: fixed;
+            /* Sabit konum */
+            bottom: 20px;
+            /* Alt kenardan 20px */
+            left: 50%;
+            /* Ortala */
+            transform: translateX(-50%);
+            /* Tam merkezde */
+            display: flex;
+            /* Butonları yan yana dizmek için */
+            gap: 20px;
+            /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button,
+        .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover,
+        .gec:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="typewriter-container">
+        <div id="typewriter" class="typewriter-text"></div>
+        <div class="button-container">
+            <!-- İki buton burada yer alacak -->
+            <button class="next-button" onclick="goToScene()">Senaryoya Geç</button>
+            <button class="next-button" onclick="nextPage()">Sonraki Sayfa</button>
+        </div>
+    </div>
+
+    <script>
+        // Metinleriniz burada tanımlanacak
+        const texts = [
+            "OTURUM 5: ÇEVRİMİÇİ BİLGİ DEDEKTİFLERİ<br><br>AMAÇ: Dijital : Çevrimiçi risklerin, siber zorbalığın ve dijital bağımlılık kavramlarının kavranması ve korunma yollarının öğrenilmesi.<br><br>KONU İÇERİKLERİ: <br>•Çevrimiçi risk nedir? Çeşitleri nelerdir?<br>•Siber zorbalık acaba nedir? <br>•Dijital dünyada bağımlılık neyi ifade ediyor?<br>•Çevrimiçi risklerden nasıl korunmalıyız?",
+            "Çevrimiçi Risk Nedir?<br><br>Çevrimiçi risk bizi psikolojik, sosyal ve bilişsel yönden olumsuz olarak etkileyen durumlardır. Çevrimiçi ortamlarda karşılaştığımız bu riskler farklı alanlarda olabilirler. Teknolojinin sürekli değişmesi ve gelişmesi bu risklerin de değişmesine neden olmaktadır.",
+            "Çevrimiçi Risk Çeşitleri Nelerdir?<br><br>1.İçerikten kaynaklanan riskler: Yanlış bilgiler, Şiddet içeren, ırkçı ve yönlendirici içerikler, Uygunsuz müstehcen içerikler<br>2.İletişimden kaynaklanan riskler: Kişisel bilgilerin dijital ortamlarda paylaşılması, Siber zorbalığa maruz kalma, Siber tacize uğrama<br>3.Ticari kaynaklı riskler: İstenmeyen reklamlar, Kişisel bilgilerin toplanması ve kötüye kullanılması, Siber dolandırıcılık<br>4.Aşırı kullanımdan kaynaklanan riskler: İnternet bağımlılığı, Dijital oyun bağımlılığı, Sosyal medya bağımlılığı",
+            "Siber Zorbalık Acaba Nedir?<br><br>Bir elektronik iletişim aracı ile karşıdaki bireye zarar verme ya da rahatsız etme amacıyla yapılan, kasıtlı ve sürekli bir şekilde uygulanan olumsuz davranışlardır.<br>Siber zorbalık davranışları telefon, tablet, bilgisayar vb. araçlarla e-mail gönderme, sesli veya görüntülü arama, sanal ortamlarda paylaşım yapma gibi farklı yöntemlerle gerçekleştirilir.<br><br>Siber zorbalığa örnek davranışlar nelerdir?<br><br>•Tehdit etme<br>•Hakarette bulunma<br>•Küçük düşürme<br>•Çevrimiçi isim (lakap) takma<br>•İfşa etme<br>•Rahatsız edici ve uygun olmayan mesajlar, resimler videolar gönderme<br>•Başkası adına sahte hesap açma<br>Siber Zorbalık Durumunda Ne Yapmam Gerekir?<br><br>Çevrimiçi ortamlardan veya cep telefonu gibi akıllı cihazlardan kaynağı bilinmeyen, saldırganlık veya taciz edici e-posta ve mesajlar alırsanız bunu ebeveynlerinizle veya güvendiğiniz bir yetişkinle paylaşın. Rahatsız edici bu durumların bir kopyasını alın. Ayrıca bu e-posta veya mesajlara asla yanıt/tepki vermeyin. Çünkü tepkiniz saldırganın zorbaca içeriklerine ve davranışlarına devam etmesine yol açabilir. Kullandığınız operatör veya servis sağlayıcı yoluyla durumu hemen bildirip şikâyette bulunun.",
+            "Kısaca internette yaptığımız her şeydir ve hiçbir zaman silinmeyen verilerimizdir.<br>Bu yüzden dijital ortamlarda tüm adımlarımıza dikkat etmeliyiz. Çünkü bıraktığımız her iz beklenmedik biranda karşımıza çıkabilir ve bizim için riskli durumlara yol açabilir. Bunun için bir paylaşımda bulunmadan önce şunları kendimize sormamız gerekir;<br>•İnternet üzerinden hangi bilgilerimi paylaşmam güvenli ya da güvensizdir? <br>•Paylaştığım içerikte başkalarının bilmesini istemediğim bir şey var mı? <br>•Dijital ortamlarda paylaştığım bu bilgilerin silinmeyecek olması ileride bana herhangi bir sıkıntı yaratır mı? ",
+            "Çerez Ne Demek? <br><br>Bir internet sitesini kullandığımızda bu sitelerin, dijital cihazlarımıza (cep telefonu, tablet ve bilgisayar gibi) bıraktığı hatırlatma dosyalarıdır. Bu dosyalarda açtığımız oturum bilgileri gibi önemli verilerimiz bulunur. <br>Çerezleri önlemek için alabileceğimiz güvenlik önlemleri ise şunlardır;<br><br>•Bilmediğimiz ve güvenmediğimiz internet sitelerinde dolaşmamalıyız. Çünkü birçok riskler ve tuzaklar barındırabilir.<br>•Sık kullandığımız siteleri sık kullanılanlar listesine yani favorilerimize eklemeliyiz.<br>•E-postamıza gelen istenmeyen ve bilinmeyen bağlantılara tıklamamalıyız.<br>•Kullandığımız tarayıcıların gizlilik ayarlarını yapmalıyız ve bu ayarları kişiselleştirmeliyiz.",
+            "Tarayıcımın Gizlilik Ayarlarını Nasıl Yaparım?Güvendiğimiz sitelere çerez için onay verebiliriz. Ancak güvenmediğimiz sitelerin çerez onaylarını devre dışı bırakmalıyız. <br><br>Tarayıcımızın geçmişi hatırlama seçeneği kapatmalıyız.<br>Arama motorları olan FireFox, Google Chrome ve İnternet Explorer gibi uygulamaların çerez ayarlarını yapmak için;<br>Araçlar- internet seçeneklerinden ya da sitede bulunan sağ üstte yer alan 3 noktadan Ayarlar-Gizlilik bölümünden ulaşarak yapabiliriz.",
+            "Dijital Dünyada Bağımlılık Neyi İfade Ediyor?<br><br>İnternet bağımlılığı, internet kullanımının aşırı olması ve kontrol edilememesidir. İnternet bağımlığı ailemizle, arkadaşlarımızla ve iş ortamımızda hatta günlük yaşamımızda sorunlar yaşamamızı ifade eder.<br>Aşırı internet kullanımı fiziksel, sosyal ve psikolojik açıdan pek çok sorun yaşamamıza neden olabilir. Bu sorunlardan bazıları ise şunlardır;<br>•Uyku bozukluğu (geç uyuma, sabah uyanamama, düzensiz uyku)<br>•Yeme bozukluğu ve obezite riski <br>•Fiziksel rahatsızlıklar (görme sorunları, eklem yerlerinde ağrılar)<br>•Okul başarısında düşme ve devamsızlık <br>•Sosyal ilişiklerde sorunlar ve yalnızlaşma<br>•Psikolojik rahatsızlar (huzursuzluk, gerginlik, saldırganlık, suçluluk duyguları)<br><br>Dijital dünyada bağımlılık deyince oyun bağımlılığı ve oyun güvenliği ön plana çıkmaktadır. Dijital oyunların bize sosyalleşme ortamı sağlaması, başarı isteği, rekabet ortamının çekiciliği ve oyunda geçirdiğimiz süreyi farkında olmayışımız oyunları ilgi çekici ve daha cazip bir hale getirmektedir. Oyunların hayal gücümüzün gelişmesi, el göz koordinasyon becerimizin artması, özerklik ve sorumluluk alma, matematiksel düşünme ve eğlenceli ortamlar sunarak stresi azaltma gibi olumlu yanları olduğu bilinmektedir. Diğer yandan oyun bağımlılığı, asosyal bir yaşam biçimi, kendimize veya çevremize zarar verme, siber zorbalık, dolandırılma ve mahremiyet ihlalleri gibi olumsuz yanları da bulunmaktadır.",
+            "Güvenli Bir Şekilde Nasıl Dijital Oyun Oynayabilirim?<br><br>•Oyunları çevrimiçi oynuyorsak güvenilir platformları tercih etmeliyiz.<br>•Oyunları cihazımıza indirmek istiyorsak güvenli kaynakları (lisanslı oyunları) kullanarak indirmeliyiz.<br>•Antivirüs yazılımı bulunan ve güvenlik duvarı aktif olan cihazlarda oyun oynamalıyız.<br>•Oynayacağımız dijital oyunları yaş etiketlerine dikkat ederek seçmeliyiz. Yaşımıza uygun olmayan oyunları indirmemeli ve oynamamalıyız.<br>•Oyun oynarken kendimize bir takma isim belirlemeliyiz.<br>•Özel bilgilerimizi, adresimizi, resimlerimizi, telefon numaramızı ve e-posta adresimizi asla paylaşmamalıyız.<br>•Profil resmine kendi fotoğrafımızı asla koymamalıyız. Bunun yerine sevdiğimiz bir avatar resmini koymalıyız.<br>•Oynadığımız her bir oyun için farklı kullanıcı adı ve şifre kullanmalıyız.<br>•Popüler oyun akımlarına karşı dikkatli olmalıyız. Bu tarz oyun akımları bizim sağlığımıza zarar verecek boyutlara sahip olabilir.<br>•Şiddet ve nefret içeren oyunları oynamaktan uzak durmalıyız.<br>•Oyun sırasında karşılaştığımız siber zorbalık gibi (tehdit, hakaret, uygunsuz içerikli mesajlar vb.) olumsuz durumları ebeveynlerimiz ile paylaşmalıyız. Gerekli gördüğümüz durumları kolluk kuvvetlerine bildirmeliyiz.",
+            "Çevrimiçi Risklerden Nasıl Korunmalıyız?<br><br>•Kişisel bilgilerimiz olan ad-soyad, doğum tarihi, ev ve okul adresi, telefon numarası ve şifreleri asla ailenizin haricinde diğer bireylerle paylaşmayın.<br>•Bilinmeyen kaynaklardan bir şey indirmeyin.<br>•Sosyal medya ve internet sitelerinde bulunan hesaplarınızın gizlilik ayarlarını yapın.<br>•Telefonunuzun ve kullandığınız tüm uygulamaların konum izinlerini kapalı tutun.<br>•Instagram ve diğer sosyal medya hesaplarınızı kimlerin takip etmesine izin verdiğinize dikkat edin. Sadece tanıdığınız ve güvendiğiniz kişilere izin/onay verin.<br>•Uygunsuz görüntü, şiddet ve taciz içeren, nefret söylemleri barındıran bir ileti alırsanız cevaplamayın. Mesajı gönderen kişiyi engelleyerek güvendiğiniz bir yetişkine bu durumu söyleyin.<br>•Çevrimiçi zorbalıktan ve tacizden kendinizi koruyun ve bu durumu bildirin.<br>•Hesaplarınızın profillerini gizleyin.<br>•Güvenli arama ayarlarını aktif edin.<br>•Tanımadığınız yabancı kişilerle iletişim kurmayın ve onlara fotoğraflarınız gibi özel bilgilerinizi göndermeyin.<br>•Paylaşım yaparken dikkatli okun. Çünkü yaptığımız paylaşımlar geri alınamaz.<br>•Kullanmadığınız zaman kameralarınızı kapatın.<br>•Tüm cihazlarınıza antivirüs programı yükleyerek, bilgisayar korsanlarına ve virüs tehdidine karşı koruyun.<br>•Aşırı internet kullanımından uzak durun. İnternet kullanım sürenizi ailenizle birlikte belirleyin."
+
+        ]
+
+        let currentIndex = 0; // Mevcut metin indeksi
+        let charIndex = 0;    // Yazılacak karakter indeksi
+        const typingSpeed = 20; // Harf yazma hızı (ms)
+
+        // Daktilo efektini çalıştıran fonksiyon
+        function typeWriterEffect() {
+            const typewriterElement = document.getElementById('typewriter');
+            const currentText = texts[currentIndex];
+
+            // HTML etiketlerini işlemek için karakterleri tek tek değil, doğrudan tüm HTML olarak ele alıyoruz
+            if (charIndex < currentText.length) {
+                // Metnin bir parçasını innerHTML'e ekleriz, bu sayede HTML etiketleri de işlenir
+                typewriterElement.innerHTML = currentText.slice(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeWriterEffect, typingSpeed);
+            } else {
+                // Metin tamamlandı, imleç yanıp sönme efekti
+                typewriterElement.classList.add('typing');
+            }
+
+        }
+        // Sayfayı yönlendirme fonksiyonu
+        function goToScene() {
+            window.location.href = 'scene-5.1.html'; // Hedef sayfa
+        }
+
+        // Sayfa değişim fonksiyonu
+        function nextPage() {
+            currentIndex++;
+            if (currentIndex < texts.length) {
+                charIndex = 0; // Karakter indeksi sıfırlanır
+                document.getElementById('typewriter').classList.remove('typing');
+                document.getElementById('typewriter').innerHTML = ''; // Önceki metin temizlenir
+                typeWriterEffect(); // Yeni metin yazılmaya başlar
+            } else {
+
+
+            }
+        }
+
+        // İlk metni başlat
+        window.onload = function () {
+            typeWriterEffect();
+        };
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş-2</title>
+    <style>
+        /* Sayfanın ortalanması ve boşlukların ayarlanması */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            /* Daktilo efekti için uygun font */
+            background-color: #f4f4f4;
+        }
+
+        /* Metin kutusu ve kenar boşlukları */
+        .typewriter-container {
+            width: 100%;
+            max-width: 1200px;
+            /* Genişlik sınırı */
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Daktilo efekti */
+        .typewriter-text {
+            display: inline-block;
+            white-space: pre-wrap;
+            /* Metin uzun olduğunda alt satıra geçmesi için */
+            overflow: hidden;
+            border-right: 3px solid black;
+            /* İmleç efekti */
+            font-size: 24px;
+        }
+
+        /* İmleç efekti (yanıp sönme) */
+        @keyframes blink {
+            0% {
+                border-right-color: black;
+            }
+
+            50% {
+                border-right-color: transparent;
+            }
+
+            100% {
+                border-right-color: black;
+            }
+        }
+
+        /* Daktilo yazısı */
+        .typewriter-text.typing::after {
+            content: "";
+            animation: blink 0.3s step-end infinite;
+        }
+
+        /* Buton stili */
+        .button-container {
+            position: fixed;
+            /* Sabit konum */
+            bottom: 20px;
+            /* Alt kenardan 20px */
+            left: 50%;
+            /* Ortala */
+            transform: translateX(-50%);
+            /* Tam merkezde */
+            display: flex;
+            /* Butonları yan yana dizmek için */
+            gap: 20px;
+            /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button,
+        .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover,
+        .gec:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="typewriter-container">
+        <div id="typewriter" class="typewriter-text"></div>
+        <div class="button-container">
+            <!-- İki buton burada yer alacak -->
+            <button class="next-button" onclick="goToScene()">Senaryoya Geç</button>
+            <button class="next-button" onclick="nextPage()">Sonraki Sayfa</button>
+        </div>
+    </div>
+
+    <script>
+        // Metinleriniz burada tanımlanacak
+        const texts = [
+            "OTURUM 3: SÜPER ŞİFRE KAHRAMANLARI <br><br>AMAÇ: Şifrelerin, avatar ve takma adların gücünün ve öneminin anlaşılması.<br><br>KONU İÇERİKLERİ: <br>•Şifreler neden önemlidir?<br>•Güçlü şifreleri nasıl oluştururuz ve nasıl saklarız? <br>•Avatarın ve takma adın var mı?",
+            "Şifreler Neden Önemlidir?<br>Şifreler güvenliğimizin temelini oluşturarak içinde bulunduğumuz dijital çağda büyük önem taşırlar. Dijital iletişim kanallarını kullanan tüm kişilerin, mahremiyet ve güvenliklerini koruyabilmesi için uçtan uca şifreleme yöntemini kullanmaları gerekmektedir. Uçtan uca şifreleme yöntemi, yalnızca iletişim kuran kullanıcıların bilgileri okuyabildiği güçlü bir şifreleme biçimidir. Çocuk veya yetişkin herkesin gizlilik haklarına ve ifade özgürlüğüne yönelik olası ihlallere karşı dijital bir kalkan sağlar.<br>Sonuç olarak şifreleme bizler için önemlidir. Çünkü bizim verilerimizi, gizliliğimizi, mahremiyet haklarımızı ve ifade özgürlüğümüzü korur.",
+            "Güçlü Şifreleri Nasıl Oluştururuz ve Nasıl Saklarız?<br><br>•Cihazlarımız ve hesaplarımız için tahmin edilmesi zor ve güçlü şifreler oluşturmalıyız. Basit saldırı durumlarında kırılması güç olan şifreler kullanmalıyız.<br>•Şifrelerimiz büyük harfler, küçük harfler, sayılar ve semboller içermelidir.<br>•Şifrelerimiz en az 8 karakter uzunluğunda olmalıdır. Çünkü şifremiz ne kadar uzun olursa tahmin edilmesi o kadar zor olur.<br>•Doğum tarihimiz, ad-soyad gibi kişisel bilgilerimizi veya 123456 gibi herkesin kolayca tahmin edebileceği şifreleri koymamalıyız.<br>•Şifrelerimizi bir şifre yöneticisinde saklamalıyız.<br>•Oluşturduğumuz bir şifreyi her yerde kullanmamalıyız. Eğer ki bir hesabımıza ait şifre başkaları tarafından çalınıp ele geçirilirse diğer hesaplarımızı da aynı şifreyle ele geçirebilirler.<br>•Şifresiz olan Wi-Fi ağlarına bağlanmamalıyız. Bildiğimiz güvenli ağlara bağlanarak interneti kullanmalıyız.<br>•Cep telefonu, bilgisayar ve tablet gibi cihazlarımıza tuş kilidi ve güçlü şifreler koymalıyız.<br>•Şifrelerimizi arkadaşlarımızın dahil hiç kimseyle paylaşmamalıyız.",
+            "Avatarın ve Takma Adın Var Mı?<br><br>Avatar, çevrimiçi ortamlarda kullanıcın kendini temsil etmesi için kullandığı çizgi film karakteri veya simgesi gibi resimli bir çıkartmadır. Çevrimiçi bir oyuna veya sohbete katılırken bizlerde gizliliğimizi korumak için kendi fotoğrafımızı koymak yerine, seçtiğimiz bir avatarı profil resmimiz olarak kullanabiliriz.<br>Takma ad ise (ekran adı) çevrimiçi ortamlarda kullandığımız bir addır. Örneğin; Süper Mario gibi sevdiğimiz bir karakterin adını kendimize takma ad olarak seçebiliriz. Çevrimiçi ortamlarda avatar ve takma ad kullanmak bizim kişisel bilgilerimizin hem saklı kalmasını hem de güvende olmamızı sağlayan basit ipuçlarıdır."
+        ];
+
+        let currentIndex = 0; // Mevcut metin indeksi
+        let charIndex = 0;    // Yazılacak karakter indeksi
+        const typingSpeed = 20; // Harf yazma hızı (ms)
+
+        // Daktilo efektini çalıştıran fonksiyon
+        function typeWriterEffect() {
+            const typewriterElement = document.getElementById('typewriter');
+            const currentText = texts[currentIndex];
+
+            // HTML etiketlerini işlemek için karakterleri tek tek değil, doğrudan tüm HTML olarak ele alıyoruz
+            if (charIndex < currentText.length) {
+                // Metnin bir parçasını innerHTML'e ekleriz, bu sayede HTML etiketleri de işlenir
+                typewriterElement.innerHTML = currentText.slice(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeWriterEffect, typingSpeed);
+            } else {
+                // Metin tamamlandı, imleç yanıp sönme efekti
+                typewriterElement.classList.add('typing');
+            }
+
+        }
+        // Sayfayı yönlendirme fonksiyonu
+        function goToScene() {
+            window.location.href = 'scene-3.1.html'; // Hedef sayfa
+        }
+
+        // Sayfa değişim fonksiyonu
+        function nextPage() {
+            currentIndex++;
+            if (currentIndex < texts.length) {
+                charIndex = 0; // Karakter indeksi sıfırlanır
+                document.getElementById('typewriter').classList.remove('typing');
+                document.getElementById('typewriter').innerHTML = ''; // Önceki metin temizlenir
+                typeWriterEffect(); // Yeni metin yazılmaya başlar
+            } else {
+
+
+            }
+        }
+
+        // İlk metni başlat
+        window.onload = function () {
+            typeWriterEffect();
+        };
+
+
+    </script>
+
+</body>
+
+</html>

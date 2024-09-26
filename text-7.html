@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş-2</title>
+    <style>
+        /* Sayfanın ortalanması ve boşlukların ayarlanması */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            /* Daktilo efekti için uygun font */
+            background-color: #f4f4f4;
+        }
+
+        /* Metin kutusu ve kenar boşlukları */
+        .typewriter-container {
+            width: 100%;
+            max-width: 1200px;
+            /* Genişlik sınırı */
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Daktilo efekti */
+        .typewriter-text {
+            display: inline-block;
+            white-space: pre-wrap;
+            /* Metin uzun olduğunda alt satıra geçmesi için */
+            overflow: hidden;
+            border-right: 3px solid black;
+            /* İmleç efekti */
+            font-size: 24px;
+        }
+
+        /* İmleç efekti (yanıp sönme) */
+        @keyframes blink {
+            0% {
+                border-right-color: black;
+            }
+
+            50% {
+                border-right-color: transparent;
+            }
+
+            100% {
+                border-right-color: black;
+            }
+        }
+
+        /* Daktilo yazısı */
+        .typewriter-text.typing::after {
+            content: "";
+            animation: blink 0.3s step-end infinite;
+        }
+
+        /* Buton stili */
+        .button-container {
+            position: fixed;
+            /* Sabit konum */
+            bottom: 20px;
+            /* Alt kenardan 20px */
+            left: 50%;
+            /* Ortala */
+            transform: translateX(-50%);
+            /* Tam merkezde */
+            display: flex;
+            /* Butonları yan yana dizmek için */
+            gap: 20px;
+            /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button,
+        .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover,
+        .gec:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="typewriter-container">
+        <div id="typewriter" class="typewriter-text"></div>
+        <div class="button-container">
+            <!-- İki buton burada yer alacak -->
+            <button class="next-button" onclick="goToScene()">Senaryoya Geç</button>
+            <button class="next-button" onclick="nextPage()">Sonraki Sayfa</button>
+        </div>
+    </div>
+
+    <script>
+        // Metinleriniz burada tanımlanacak
+        const texts = [
+            "OTURUM 7: ÖZERKLİK YOLCULUĞUNA ÇIKMAYA KARAR VERİYORUZ!<br><br>AMAÇ: Karar verme ve özerkliğin uygulamaya geçirilmesi.<br><br>KONU İÇERİKLERİ:<br>•Dijital ortamda karar verme ve özerklik süreci neden önemlidir? <br>•Karar verdim geribildirim/şikâyet etmek istiyorum!<br>•Daha fazla bilgiyi nerden öğrenebilirim?",
+            "Dijitalleşen dünyada sadece alan ve kullanan değil, yeni şeyler ortaya koyabilen, problem çözme becerisi gelişmiş, kendi kararlarını doğru bir şekilde kendi verebilen, özerklik bilinci ve becerisini kazanmış bireyler olmamız çok önemlidir.<br>Bize sunulan dijital teknolojileri etkin bir biçimde kullanarak fırsat ve faydalarından yararlanmamız gereklidir.  Bu fırsatlar beraberinde bizim mahremiyetimiz ve güvenliğimiz için büyük riskleri de beraberinde getirebilir. Bu sebeple riskleri önceden tespit etmek, ortadan kaldırmak ve kendimizi korumak için bu sorumluluk alma, karar verme ve özerklik becerilerimizin gelişmiş olması gerekir. Bunu da bizlere sağlayacak olan şey iyi bir dijital okuryazar olmaktır.<br>Dijital okuryazarlık becerisine sahip olma bizim dijital ortamda mahremiyetimizi koruma ve haklarımıza sahip çıkma da önemli bir unsur ve güçtür.",
+            "Karar Verdim Geribildirim/Şikâyet Etmek İstiyorum!<br><br>Facebook<br>Şikâyet etmek istediğimiz paylaşımın sağ üst köşesinde bulunan üç noktaya, ardından “fotoğrafı/gönderiyi şikâyet et” sekmesine tıklanır. Açılan sekmeden şikâyet nedeni ve hangi açıdan rahatsız edici olduğu seçilir. İstediğin neden bulunmuyorsa, “başka bir şey” seçeneği işaretlenip nedenimiz belirtilir ve incelenmesi için “Facebook’a gönder”e tıklanır.",
+            "YouTube<br><br>Videonun sağ üst köşesinde bulunan üç noktaya tıklanarak “bildir” seçeneği tıklanır ve en uygun neden seçilir.",
+            "Twitter<br><br>Şikâyet etmek istenen tweetin sağ üst köşesindeki ok işaretine gelinir ve “tweeti bildir” seçeneği seçilir. “Taciz ediyor veya rahatsız ediyor” seçeneğini seçilerek rahatsız edici sebep işaretlenir.",
+            "Instagram<br><br>Şikâyet etmek istenilen paylaşımın sağ üst köşesindeki üç nokta seçilir ve “şikâyet et” seçeneği işaretlenir. Şikâyet nedeni olarak “uygunsuz” seçeneği seçilerek şikâyet nedeni belirtilir ve “şikayet et” butonuna tıklanır.<br>Daha Fazla Bilgiyi Nerden Öğrenebilirim?<br>•Güvenli İnternet Merkezi (GİM) https://www.gim.org.tr/<br>•İnternet Bilgi İhbar Merkezi https://www.ihbarweb.org.tr/<br>•GİM Bilinçlendirme Merkezi https://www.guvenliweb.org.tr/<br>•GİM İnternet Bilgi ve Destek Hattı https://www.internetyardim.org.tr/<br>•GİM Açık Kaynak Dijital İçerik Üretme Projesi https://acikkaynak.gim.org.tr/<br>•Güvenli İnternet Hizmeti https://www.guvenlinet.org.tr/<br>•Bilinçli ve Güvenli İnternet Kullanımı Bilgi Destek Hattı https://www.turkiye.gov.tr/btk-internet-yardim-basvurusu <br>•Dijital Oyun İncelemeleri https://www.guvenlioyna.org.tr/ <br>•Güvenli İnternet Günü https://www.gig.org.tr/<br>•Güvenli Çocuk Portalı http://www.guvenlicocuk.org.tr/<br>•BTK İnternet Daire Başkanlığı https://internet.btk.gov.tr/"
+
+
+
+        ]
+
+        let currentIndex = 0; // Mevcut metin indeksi
+        let charIndex = 0;    // Yazılacak karakter indeksi
+        const typingSpeed = 20; // Harf yazma hızı (ms)
+
+        // Daktilo efektini çalıştıran fonksiyon
+        function typeWriterEffect() {
+            const typewriterElement = document.getElementById('typewriter');
+            const currentText = texts[currentIndex];
+
+            // HTML etiketlerini işlemek için karakterleri tek tek değil, doğrudan tüm HTML olarak ele alıyoruz
+            if (charIndex < currentText.length) {
+                // Metnin bir parçasını innerHTML'e ekleriz, bu sayede HTML etiketleri de işlenir
+                typewriterElement.innerHTML = currentText.slice(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeWriterEffect, typingSpeed);
+            } else {
+                // Metin tamamlandı, imleç yanıp sönme efekti
+                typewriterElement.classList.add('typing');
+            }
+
+        }
+        // Sayfayı yönlendirme fonksiyonu
+        function goToScene() {
+            window.location.href = 'scene-7.1.html'; // Hedef sayfa
+        }
+
+        // Sayfa değişim fonksiyonu
+        function nextPage() {
+            currentIndex++;
+            if (currentIndex < texts.length) {
+                charIndex = 0; // Karakter indeksi sıfırlanır
+                document.getElementById('typewriter').classList.remove('typing');
+                document.getElementById('typewriter').innerHTML = ''; // Önceki metin temizlenir
+                typeWriterEffect(); // Yeni metin yazılmaya başlar
+            } else {
+
+
+            }
+        }
+
+        // İlk metni başlat
+        window.onload = function () {
+            typeWriterEffect();
+        };
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş-2</title>
+    <style>
+        /* Sayfanın ortalanması ve boşlukların ayarlanması */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            /* Daktilo efekti için uygun font */
+            background-color: #f4f4f4;
+        }
+
+        /* Metin kutusu ve kenar boşlukları */
+        .typewriter-container {
+            width: 100%;
+            max-width: 1200px;
+            /* Genişlik sınırı */
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Daktilo efekti */
+        .typewriter-text {
+            display: inline-block;
+            white-space: pre-wrap;
+            /* Metin uzun olduğunda alt satıra geçmesi için */
+            overflow: hidden;
+            border-right: 3px solid black;
+            /* İmleç efekti */
+            font-size: 24px;
+        }
+
+        /* İmleç efekti (yanıp sönme) */
+        @keyframes blink {
+            0% {
+                border-right-color: black;
+            }
+
+            50% {
+                border-right-color: transparent;
+            }
+
+            100% {
+                border-right-color: black;
+            }
+        }
+
+        /* Daktilo yazısı */
+        .typewriter-text.typing::after {
+            content: "";
+            animation: blink 0.3s step-end infinite;
+        }
+
+        /* Buton stili */
+        .button-container {
+            position: fixed;
+            /* Sabit konum */
+            bottom: 20px;
+            /* Alt kenardan 20px */
+            left: 50%;
+            /* Ortala */
+            transform: translateX(-50%);
+            /* Tam merkezde */
+            display: flex;
+            /* Butonları yan yana dizmek için */
+            gap: 20px;
+            /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button,
+        .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover,
+        .gec:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="typewriter-container">
+        <div id="typewriter" class="typewriter-text"></div>
+        <div class="button-container">
+            <!-- İki buton burada yer alacak -->
+            <button class="next-button" onclick="goToScene()">Senaryoya Geç</button>
+            <button class="next-button" onclick="nextPage()">Sonraki Sayfa</button>
+        </div>
+    </div>
+
+    <script>
+        // Metinleriniz burada tanımlanacak
+        const texts = [
+            "OTURUM 6: SOSYAL MEDYA GİZLİ BİR MACERA!<br><br>AMAÇ: Sosyal medya araçlarının neler olduğunun ve güvenli bir şekilde nasıl kullanılacağının öğrenilmesi.<br>KONU İÇERİKLERİ:<br><br>•Sosyal medya araçları nedir?<br>•Sosyal medya risk ve tehlikeler içerir mi?<br>•Dikkat ! Burada kurallar var !",
+            "Sosyal ağlar, ailemizle ve arkadaşlarımızla iletişim kurduğumuz, mesajlaştığımız, resim ve videolarımızı birbirimize gönderdiğimiz ve bunları başka insanlarla da paylaşma gibi faaliyetleri yaptığımız ağlardır.<br><br>Sosyal ağlarda yer alan medya araçlarıyla paylaşım yapmak ve sevdiklerimizle iletişime geçmek eğlenceli ve keyif verici bir durum olduğu gibi aynı zamanda aşırı kullanımı ve güvenlik kurallarını bilmemek büyük riskler oluşturur. Çünkü farkında olmadan özel bilgilerimizi, resimlerimizi, gezdiğimiz ve yaşadığımız yerlerin konumlarını paylaşabiliriz. Paylaştığımız bu bilgilerimiz yabancı kişiler tarafından ele geçirilerek farklı amaçlar için kullanılabilir.<br>Sosyal medyada mahremiyetimiz ve güvenliğimiz çok önemlidir. Paylaştığımız bilgileri silmemize veya hesaplarımızı kapatmamıza rağmen veri tabanında saklanarak silinmemektedir. Dijital dünyada bıraktığımız izler olarak kalmaktadır.<br>Arkadaşlarımızla paylaşmış olduğumuz resim ve videolar onlar tarafından başka kişilerle de paylaşılabilir. Yani sadece arkadaşımıza gönderdiğimizi düşünürken istemediğimiz ve yabancı kişilere de yayılabilir. Bu durum arkadaşlarımızla olan iletişimizin bozulmasına ve mahremiyetimizin tehlikeye girmesine neden olabilir.<br>Kaynağı belirsiz ve asılsız olan bilgileri paylaşmanın, kişi veya bir kuruma karşı yapılan paylaşımlara dahil olmanın hukuki olarak bir yaptırımı yani cezası olduğunu unutmamalıyız.<br>En sık kullandığımız sosyal medya araçları şunlardır; Facebook, Youtube, Instagram, Twitter, Snapchat, Tiktok. UNUTMAYALIM! Sosyal medya araçlarını 13 yaşından küçük çocukların kullanmaması gerekir. 13 yaşından büyük olanların ise ailelerin denetiminde ve eşliğinde kullanması gereklidir. Sosyal medyadaki profillerimizde kişisel bilgilerimiz (adres, okul adı, yaş gibi) asla yer almamalıdır.",
+            "Dikkat ! Burada Kurallar Var !<br><br>Kural 1:Arkadaşlık isteklerini kabul etmeden önce düşün!<br>Sana gönderilen arkadaşlık isteklerini onaylamadan önce kim olduğunu öğrenmeye ve profil bilgilerini görmeye çalışmalısınız. Örneğin; istek gönderen kişiyi tanıyor musun, ortak arkadaşlarınız var mı? Bazen insanlar olmadıkları biri gibi davranırlar ve size aldatıcı bilgiler ve resimler sunarlar.<br>Kural 2:Paylaşmadan önce düşün!<br>Bir mesaj, resim veya video paylaşmadan önce bunu neden paylaştığını, daha sonrasında senin güvenliğin ve mahremiyetin için bir risk yaratıp yaratmayacağını düşünmelisin. Özellikle üzgün ve kızgın olduğun zamanlarda paylaşım yapmadan önce düşünmelisin. <br>Kural 3:Göndermeden önce düşün!<br>Sana ait ve özel olan kişisel bilgilerini, ev ve okul adresini, telefon numaranı, banka bilgilerini ve kullandığın şifrelerini başkalarına göndermemen ve paylaşmaman gerekir. Bu yüzden sosyal medya platformlarındaki gizlilik ayarlarını yapman çok önemli bir detaydır.<br>Kural 4:Bildir!<br>Dijital ortamlarda karşılaştığın uygunsuz durumları ve riskleri bildirmelisin. Bunu kullandığın sosyal medya araçları üzerinden veya sitelerdeki kötüye kullanım ve güvenlik durumlarını bildirme sekmelerinden yapabilirsin.<br>Kural 5:Saklama!<br>Güvenliğin ve mahremiyetin için endişelendiğin veya korktuğun durumları ya da yaşadığın olumsuz olayları ebeveynlerin, öğretmelerin ve arkadaşların ile paylaşmalısın."
+
+
+        ]
+
+        let currentIndex = 0; // Mevcut metin indeksi
+        let charIndex = 0;    // Yazılacak karakter indeksi
+        const typingSpeed = 20; // Harf yazma hızı (ms)
+
+        // Daktilo efektini çalıştıran fonksiyon
+        function typeWriterEffect() {
+            const typewriterElement = document.getElementById('typewriter');
+            const currentText = texts[currentIndex];
+
+            // HTML etiketlerini işlemek için karakterleri tek tek değil, doğrudan tüm HTML olarak ele alıyoruz
+            if (charIndex < currentText.length) {
+                // Metnin bir parçasını innerHTML'e ekleriz, bu sayede HTML etiketleri de işlenir
+                typewriterElement.innerHTML = currentText.slice(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeWriterEffect, typingSpeed);
+            } else {
+                // Metin tamamlandı, imleç yanıp sönme efekti
+                typewriterElement.classList.add('typing');
+            }
+
+        }
+        // Sayfayı yönlendirme fonksiyonu
+        function goToScene() {
+            window.location.href = 'scene-6.1.html'; // Hedef sayfa
+        }
+
+        // Sayfa değişim fonksiyonu
+        function nextPage() {
+            currentIndex++;
+            if (currentIndex < texts.length) {
+                charIndex = 0; // Karakter indeksi sıfırlanır
+                document.getElementById('typewriter').classList.remove('typing');
+                document.getElementById('typewriter').innerHTML = ''; // Önceki metin temizlenir
+                typeWriterEffect(); // Yeni metin yazılmaya başlar
+            } else {
+
+
+            }
+        }
+
+        // İlk metni başlat
+        window.onload = function () {
+            typeWriterEffect();
+        };
+
+
+    </script>
+
+</body>
+
+</html>

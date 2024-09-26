@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş-2</title>
+    <style>
+        /* Sayfanın ortalanması ve boşlukların ayarlanması */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            /* Daktilo efekti için uygun font */
+            background-color: #f4f4f4;
+        }
+
+        /* Metin kutusu ve kenar boşlukları */
+        .typewriter-container {
+            width: 100%;
+            max-width: 1200px;
+            /* Genişlik sınırı */
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Daktilo efekti */
+        .typewriter-text {
+            display: inline-block;
+            white-space: pre-wrap;
+            /* Metin uzun olduğunda alt satıra geçmesi için */
+            overflow: hidden;
+            border-right: 3px solid black;
+            /* İmleç efekti */
+            font-size: 24px;
+        }
+
+        /* İmleç efekti (yanıp sönme) */
+        @keyframes blink {
+            0% {
+                border-right-color: black;
+            }
+
+            50% {
+                border-right-color: transparent;
+            }
+
+            100% {
+                border-right-color: black;
+            }
+        }
+
+        /* Daktilo yazısı */
+        .typewriter-text.typing::after {
+            content: "";
+            animation: blink 0.3s step-end infinite;
+        }
+
+        /* Buton stili */
+        .button-container {
+            position: fixed;
+            /* Sabit konum */
+            bottom: 20px;
+            /* Alt kenardan 20px */
+            left: 50%;
+            /* Ortala */
+            transform: translateX(-50%);
+            /* Tam merkezde */
+            display: flex;
+            /* Butonları yan yana dizmek için */
+            gap: 20px;
+            /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button,
+        .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover,
+        .gec:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="typewriter-container">
+        <div id="typewriter" class="typewriter-text"></div>
+        <div class="button-container">
+            <!-- İki buton burada yer alacak -->
+            <button class="next-button" onclick="goToScene()">Senaryoya Geç</button>
+            <button class="next-button" onclick="nextPage()">Sonraki Sayfa</button>
+        </div>
+    </div>
+
+    <script>
+        // Metinleriniz burada tanımlanacak
+        const texts = [
+            "OTURUM 2: GİZLİLİK VE MAHREMİYET: DİKKAT SIRLAR ÖNEMLİDİR!<br><br>AMAÇ: Dijital gizlilik ve mahremiyet kavramlarının öğrenilmesi ve bunların öneminin kavranması.      <br><br>KONU İÇERİKLERİ: <br>•Kişisel bilgiler (veriler) nedir ve nasıl korunur?<br>•Mahremiyet nedir?<br>•Dijital dünyada mahremiyet/gizlilik kavramı nedir?",
+            "Kişisel Verilerin Korunması Kanuna göre, kişisel veri, “Kimliği belirli veya belirlenebilir gerçek kişiye ilişkin her türlü bilgi” olarak tanımlanmıştır<br><br>.Kişisel veri, yalnızca ad-soyad, doğum tarihi ve doğum yeri gibi kişinin kesin teşhisini sağlayan bilgiler değildir. Kişinin fiziki, ailevi, ekonomik ve sosyal özelliklerine ilişkin bilgiler de kişisel verilerdir.",
+            "Kişisel Verilerimi Nasıl Korurum?<br><br>•Çevrimiçi paylaşımlarımızda dikkatli olmalıyız. Özellikle kişisel bilgilerimizi dijital ortamlarda paylaşmamalıyız.<br>•Güçlü şifreler oluşturmalı ve 2 aşamalı şifreleme tekniğini kullanmalıyız. Google Authenticator gibi programlar ile şifrelerimizin çalınmasını önlemeliyiz.<br>•Herkese açık olan yerlerde (cafe, restoran vb.) bulunan Wi-Fi bağlantılarını kullanmamalıyız. Özellikle bu Wi-Fi bağlantılarıyla önemli bilgilerimizi içeren bankacılık işlemleri gibi işlemlerimizi yapmamalıyız.<br>•Bilinmeyen kişilerden gelen e-postalara asla tıklamamalıyız. Yine bilinmeyen telefon numaralarından gelen aramalara karşı dikkatli olmalıyız ve asla özel bilgilerimiz karşı tarafla paylaşmamalıyız.<br>•İnternetten alışveriş yaparken sitelerin ve ödeme yöntemlerinin güvenilir olmasına dikkat etmeliyiz. Ayrıca 3D ödeme yöntemi ile alışveriş yapmaya dikkat etmeliyiz.",
+            "Mahremiyet Nedir? <br><br>Mahremiyetin sözlükteki karşılığı ‘gizliliktir’. Gizlilik ise temel haklarımızdan birisidir ve sadece fiziksel ortamla ilgili değildir. Özel hayatımız, aile hayatımız ve kişisel bilgilerimiz gibi konuları kapsayan bilgiler ve görselleri de kapsamaktadır.<br>Mahremiyet bizim hangi bilgilerimizi kimlerle, ne zaman, nasıl ve ne kadar paylaşacağımıza kendimizin karar verdiği bir süreci içerir. Mahremiyet, bize ait olan bilgileri kontrol etme hakkını sunduğu için özerkliğimiz ve karar verme yetkimiz açısından çok önemlidir.",
+            "Dijital Dünyada Mahremiyet/Gizlilik<br><br> Dijital mahremiyet kavramı ise gerçek yaşantımızda olan mahremiyetin dijital ortamdaki bir karşılığıdır. Kişinin gerçek hayatında olduğu gibi dijital ortamda da kendisine ait ve özel olan bilgileri herkesle paylaşmaması ve kişisel bir alan oluşturmasını ifade eder. Normal yaşantımızda sadece bize özel olan, gizli kalması ve korunması gereken alanlarımızın olduğu gibi dijital dünyada da sadece bize özel alanlarımızın olması gerekmedir.<br>Kullandığımız bilgisayarlar, tabletler, cep telefonları, oyun konsolları ve Wi-Fi özelliği bulunan diğer cihazlar çevrimiçi etkinliklerimizde mahremiyetimizle ilgili birer risk kaynağını oluştururlar. Dijital dünyada yani internet ortamında mahremiyet bilincine sahip olursak mahremiyetimizi koruyabiliriz ve güvenli bir ortam yaratıp özgürce dolaşabiliriz."
+        ]
+
+        let currentIndex = 0; // Mevcut metin indeksi
+        let charIndex = 0;    // Yazılacak karakter indeksi
+        const typingSpeed = 20; // Harf yazma hızı (ms)
+
+        // Daktilo efektini çalıştıran fonksiyon
+        function typeWriterEffect() {
+            const typewriterElement = document.getElementById('typewriter');
+            const currentText = texts[currentIndex];
+
+            // HTML etiketlerini işlemek için karakterleri tek tek değil, doğrudan tüm HTML olarak ele alıyoruz
+            if (charIndex < currentText.length) {
+                // Metnin bir parçasını innerHTML'e ekleriz, bu sayede HTML etiketleri de işlenir
+                typewriterElement.innerHTML = currentText.slice(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeWriterEffect, typingSpeed);
+            } else {
+                // Metin tamamlandı, imleç yanıp sönme efekti
+                typewriterElement.classList.add('typing');
+            }
+
+        }
+        // Sayfayı yönlendirme fonksiyonu
+        function goToScene() {
+            window.location.href = 'scene-2.1.html'; // Hedef sayfa
+        }
+
+        // Sayfa değişim fonksiyonu
+        function nextPage() {
+            currentIndex++;
+            if (currentIndex < texts.length) {
+                charIndex = 0; // Karakter indeksi sıfırlanır
+                document.getElementById('typewriter').classList.remove('typing');
+                document.getElementById('typewriter').innerHTML = ''; // Önceki metin temizlenir
+                typeWriterEffect(); // Yeni metin yazılmaya başlar
+            } else {
+
+
+            }
+        }
+
+        // İlk metni başlat
+        window.onload = function () {
+            typeWriterEffect();
+        };
+
+
+    </script>
+
+</body>
+
+</html>
