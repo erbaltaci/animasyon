@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sürükle Bırak Oyunu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-panel {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        .sentence {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .drop-zone {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 40px;
+            border: 2px dashed #ccc;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+
+        .draggable {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #e2f10c;
+            color: #fff;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .draggable:active {
+            opacity: 0.7;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-panel">
+        <h1>Dijital Okuryazarlık Oyununu Tamamla</h1>
+
+        <!-- Cümleler -->
+        <div class="sentence">
+            Bilgiye '<div class="drop-zone" id="drop1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' ve '
+            <div class="drop-zone" id="drop2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' bir şekilde
+            ulaşabilir.
+        </div>
+        <div class="sentence">
+            Dijital ortamda eriştiği kaynakların '<div class="drop-zone" id="drop3" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></div>' olup olmadığına karar verebilir ve bu kaynakları '<div
+                class="drop-zone" id="drop4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' bir şekilde
+            değerlendirebilir.
+        </div>
+        <div class="sentence">
+            Dijital araçları kullanarak farklı '<div class="drop-zone" id="drop5" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></div>' üretebilir.
+        </div>
+
+        <div class="sentence">
+            Dijital ortamda güvenli ve sağlıklı '<div class="drop-zone" id="drop7" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></div>' sahiptir.
+        </div>
+        <div class="sentence">
+            '<div class="drop-zone" id="drop8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' hem kendini
+            koruyabilir hem de azaltılmasını sağlayabilir.
+        </div>
+
+        <!-- Sürüklenebilir kelimeler -->
+        <div id="words">
+            <span class="draggable" draggable="true" id="word8" ondragstart="drag(event)">sanal zorbalıktan</span>
+            <span class="draggable" draggable="true" id="word4" ondragstart="drag(event)">eleştirel</span>
+            <span class="draggable" draggable="true" id="word5" ondragstart="drag(event)">içerikler</span>
+            <span class="draggable" draggable="true" id="word1" ondragstart="drag(event)">kolayca</span>
+            <span class="draggable" draggable="true" id="word2" ondragstart="drag(event)">güvenli</span>
+            <span class="draggable" draggable="true" id="word3" ondragstart="drag(event)">güvenilir</span>
+            <span class="draggable" draggable="true" id="word7" ondragstart="drag(event)">iletişim becerisine</span>
+
+        </div>
+
+        <!-- Kontrol Et Butonu -->
+        <button class="btn btn-success mt-4" onclick="checkAnswers()">Kontrol Et</button>
+
+        <!-- Geri Bildirim -->
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <script>
+        // Drag and Drop fonksiyonları
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var dropZone = ev.target;
+
+            // Sadece boş drop-zonelara ekleme yap
+            if (!dropZone.hasChildNodes()) {
+                var draggedElement = document.getElementById(data);
+                dropZone.appendChild(draggedElement);
+                draggedElement.style.margin = "0"; // Kayan yerleşim için margin sıfırlama
+            }
+        }
+
+        // Cevapları kontrol et
+        function checkAnswers() {
+            const correctAnswers = {
+
+                drop2: "güvenli",
+                drop8: "sanal zorbalıktan",
+                drop3: "güvenilir",
+                drop5: "içerikler",
+                drop7: "iletişim becerisine",
+                drop4: "eleştirel",
+                drop1: "kolayca"
+            };
+
+            let isCorrect = true;
+
+            for (const [dropId, correctWord] of Object.entries(correctAnswers)) {
+                const dropZone = document.getElementById(dropId);
+                const droppedWord = dropZone.textContent.trim();
+
+                if (droppedWord !== correctWord) {
+                    isCorrect = false;
+                    break;
+                }
+            }
+
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.textContent = "Tebrikler! Tüm kelimeleri doğru yerleştirdiniz.";
+                feedback.style.color = "green";
+                setTimeout(function () {
+                    window.location.href = 'lastScene1.html'; // Yönlendirilmek istenilen sayfanın yolu
+                }, 2000);
+            } else {
+                feedback.textContent = "Yanlış cevaplar var. Lütfen tekrar deneyin.";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

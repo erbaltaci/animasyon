@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harf Bulmacası</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('img/selim.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .puzzle-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .input-group input {
+            text-align: center;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Dijital okuryazarlık adımlarını tamamla</h1>
+        <p class="puzzle-text">
+            <input style="width: 20px; height: 20px;" type="text" maxlength="1" id="input1" size="1">e
+            <input style="width: 20px; height: 20px;" type="text" maxlength="1" id="input2" size="1">e r
+            <input style="width: 20px; height: 20px;" type="text" maxlength="1" id="input3" size="1">
+            <br>
+
+            <input style="width: 20px; height: 20px;" type="text" maxlength="1" id="input4" size="1">o
+            <input style="width: 20px; height: 20px;" type="text" maxlength="1" id="input5" size="1">u n
+            <input style="width: 25px; height: 20px;" type="text" maxlength="1" id="input6" size="1">a
+            <br>
+
+            <input style="width: 20px; height: 20px;" type="text" maxlength="1" id="input7" size="1">a
+            <input style="width: 25px; height: 20px;" type="text" maxlength="1" id="input8" size="1">gı
+            <br>
+        </p>
+
+        <div id="feedback" class="feedback"></div>
+        <button class="btn btn-success" onclick="checkAnswers()">Cevapları Kontrol Et</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Tebrikler!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>1. ADIM (1.Anahtar) Beceri: kendini eğitme ve becerilerini artırma</p>
+                    <p>2. ADIM (2.Anahtar) Korunma: kişisel verilerini ve kendini koruma</p>
+                    <p>3. ADIM (3.Anahtar) Saygı: dijital ortamları kullanma ve faydalanma, kullanırken başka
+                        kimliklere, eserlere ve ortamlara saygı duyma</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Doğru cevapları kontrol et
+        function checkAnswers() {
+            const answers = ['b', 'c', 'i', 'k', 'r', 'm', 's', 'y'];
+            const userAnswers = [
+                document.getElementById('input1').value.toLowerCase(),
+                document.getElementById('input2').value.toLowerCase(),
+                document.getElementById('input3').value.toLowerCase(),
+                document.getElementById('input4').value.toLowerCase(),
+                document.getElementById('input5').value.toLowerCase(),
+                document.getElementById('input6').value.toLowerCase(),
+                document.getElementById('input7').value.toLowerCase(),
+                document.getElementById('input8').value.toLowerCase()
+            ];
+
+            let isCorrect = true;
+            for (let i = 0; i < answers.length; i++) {
+                if (userAnswers[i] !== answers[i]) {
+                    isCorrect = false;
+                    break;
+                }
+            }
+
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.textContent = "Tebrikler! Tüm kelimeleri doğru girdiniz.";
+                feedback.style.color = "green";
+                setTimeout(function () {
+                    // Modal'ı göster
+                    var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                    successModal.show();
+                }, 500);
+            } else {
+                feedback.textContent = "Yanlış cevaplar var. Lütfen tekrar deneyin.";
+                feedback.style.color = "red";
+            }
+        }
+
+        // Modal kapandıktan sonra yönlendirme yap
+        var successModalElement = document.getElementById('successModal');
+        successModalElement.addEventListener('hidden.bs.modal', function () {
+            setTimeout(function () {
+                window.location.href = 'scene-1.2.html'; // Yönlendirme yapılacak sayfa
+            }, 1000); // 1 saniye gecikme
+        });
+    </script>
+
+</body>
+
+</html>

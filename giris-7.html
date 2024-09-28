@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Paneli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            background-image: url(img/arkaplan.jpg);
+            /* Arkaplan resmi URL'sini buraya ekleyin */
+            background-size: cover;
+            /* Arkaplanın tam ekrana yayılmasını sağlar */
+            background-position: center;
+            /* Resmin ortalanmasını sağlar */
+            background-repeat: no-repeat;
+            /* Resmin tekrar etmesini engeller */
+        }
+
+        .panel {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1400px;
+            width: 100%;
+            height: 600px;
+            /* Panel yüksekliği ayarlandı */
+            overflow-y: auto;
+            /* Dikey kaydırma özelliği eklendi */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .panel h1 {
+            margin-bottom: 20px;
+        }
+
+        .panel p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+            /* Paragrafların üstteki ve alttaki boşluğunu sıfırla */
+        }
+
+        .button-container {
+            position: fixed;
+            /* Sabit konum */
+            bottom: 20px;
+            /* Alt kenardan 20px */
+            left: 50%;
+            /* Ortala */
+            transform: translateX(-50%);
+            /* Tam merkezde */
+            display: flex;
+            /* Butonları yan yana dizmek için */
+            gap: 20px;
+            /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button,
+        .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover,
+        .gec:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="panel">
+        <p><strong>OTURUM 7: &Ouml;ZERKLİK YOLCULUĞUNA &Ccedil;IKMAYA KARAR VERİYORUZ!</strong></p>
+        <p><strong>AMA&Ccedil;: </strong>Karar verme ve &ouml;zerkliğin uygulamaya ge&ccedil;irilmesi.</p>
+        <p><strong>KONU İ&Ccedil;ERİKLERİ:</strong></p>
+        <ul>
+            <li>Dijital ortamda karar verme ve &ouml;zerklik s&uuml;reci neden &ouml;nemlidir?</li>
+            <li>Karar verdim geribildirim/şik&acirc;yet etmek istiyorum!</li>
+            <li>Daha fazla bilgiyi nerden &ouml;ğrenebilirim?</li>
+        </ul>
+        <p><strong>METİN</strong></p>
+        <p>Dijitalleşen d&uuml;nyada sadece alan ve kullanan değil, yeni şeyler ortaya koyabilen, problem
+            &ccedil;&ouml;zme becerisi gelişmiş, kendi kararlarını doğru bir şekilde kendi verebilen, &ouml;zerklik
+            bilinci ve becerisini kazanmış bireyler olmamız &ccedil;ok &ouml;nemlidir.</p>
+        <p>Bize sunulan dijital teknolojileri etkin bir bi&ccedil;imde kullanarak fırsat ve faydalarından yararlanmamız
+            gereklidir.&nbsp; Bu fırsatlar beraberinde bizim mahremiyetimiz ve g&uuml;venliğimiz i&ccedil;in
+            b&uuml;y&uuml;k riskleri de beraberinde getirebilir. Bu sebeple riskleri &ouml;nceden tespit etmek, ortadan
+            kaldırmak ve kendimizi korumak i&ccedil;in bu sorumluluk alma, karar verme ve &ouml;zerklik becerilerimizin
+            gelişmiş olması gerekir. Bunu da bizlere sağlayacak olan şey iyi bir dijital okuryazar olmaktır.</p>
+        <p>Dijital okuryazarlık becerisine sahip olma bizim dijital ortamda mahremiyetimizi koruma ve haklarımıza sahip
+            &ccedil;ıkma da &ouml;nemli bir unsur ve g&uuml;&ccedil;t&uuml;r.</p>
+        <p><strong>Karar Verdim Geribildirim/Şik&acirc;yet Etmek İstiyorum!</strong></p>
+        <p><strong>Facebook</strong></p>
+        <p>Şik&acirc;yet etmek istediğimiz paylaşımın sağ &uuml;st k&ouml;şesinde bulunan &uuml;&ccedil; noktaya,
+            ardından &ldquo;fotoğrafı/g&ouml;nderiyi şik&acirc;yet et&rdquo; sekmesine tıklanır. A&ccedil;ılan sekmeden
+            şik&acirc;yet nedeni ve hangi a&ccedil;ıdan rahatsız edici olduğu se&ccedil;ilir. İstediğin neden
+            bulunmuyorsa, &ldquo;başka bir şey&rdquo; se&ccedil;eneği işaretlenip nedenimiz belirtilir ve incelenmesi
+            i&ccedil;in &ldquo;Facebook&rsquo;a g&ouml;nder&rdquo;e tıklanır.</p>
+        <p><strong>YouTube</strong></p>
+        <p>Videonun sağ &uuml;st k&ouml;şesinde bulunan &uuml;&ccedil; noktaya tıklanarak &ldquo;bildir&rdquo;
+            se&ccedil;eneği tıklanır ve en uygun neden se&ccedil;ilir.</p>
+        <p><strong>Twitter</strong></p>
+        <p>Şik&acirc;yet etmek istenen tweetin sağ &uuml;st k&ouml;şesindeki ok işaretine gelinir ve &ldquo;tweeti
+            bildir&rdquo; se&ccedil;eneği se&ccedil;ilir. &ldquo;Taciz ediyor veya rahatsız ediyor&rdquo;
+            se&ccedil;eneğini se&ccedil;ilerek rahatsız edici sebep işaretlenir.</p>
+        <p><strong>Instagram</strong></p>
+        <p>Şik&acirc;yet etmek istenilen paylaşımın sağ &uuml;st k&ouml;şesindeki &uuml;&ccedil; nokta se&ccedil;ilir ve
+            &ldquo;şik&acirc;yet et&rdquo; se&ccedil;eneği işaretlenir. Şik&acirc;yet nedeni olarak
+            &ldquo;uygunsuz&rdquo; se&ccedil;eneği se&ccedil;ilerek şik&acirc;yet nedeni belirtilir ve &ldquo;şikayet
+            et&rdquo; butonuna tıklanır.</p>
+        <p><strong>Daha Fazla Bilgiyi Nerden &Ouml;ğrenebilirim?</strong></p>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G&uuml;venli İnternet Merkezi (GİM) <a
+                href="https://www.gim.org.tr/"><strong>https://www.gim.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; İnternet Bilgi İhbar Merkezi <a
+                href="https://www.ihbarweb.org.tr/"><strong>https://www.ihbarweb.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GİM Bilin&ccedil;lendirme Merkezi <a
+                href="https://www.guvenliweb.org.tr/"><strong>https://www.guvenliweb.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GİM İnternet Bilgi ve Destek Hattı <a
+                href="https://www.internetyardim.org.tr/"><strong>https://www.internetyardim.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GİM A&ccedil;ık Kaynak Dijital İ&ccedil;erik
+            &Uuml;retme Projesi <a
+                href="https://acikkaynak.gim.org.tr/"><strong>https://acikkaynak.gim.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G&uuml;venli İnternet Hizmeti <a
+                href="https://www.guvenlinet.org.tr/"><strong>https://www.guvenlinet.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bilin&ccedil;li ve G&uuml;venli İnternet Kullanımı
+            Bilgi Destek Hattı <a
+                href="https://www.turkiye.gov.tr/btk-internet-yardim-basvurusu"><strong>https://www.turkiye.gov.tr/btk-internet-yardim-basvurusu</strong></a>
+        </h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dijital Oyun İncelemeleri <a
+                href="https://www.guvenlioyna.org.tr/"><strong>https://www.guvenlioyna.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G&uuml;venli İnternet G&uuml;n&uuml; <a
+                href="https://www.gig.org.tr/"><strong>https://www.gig.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; G&uuml;venli &Ccedil;ocuk Portalı <a
+                href="http://www.guvenlicocuk.org.tr/"><strong>http://www.guvenlicocuk.org.tr/</strong></a></h5>
+        <h5>&middot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BTK İnternet Daire Başkanlığı <a
+                href="https://internet.btk.gov.tr/"><strong>https://internet.btk.gov.tr/</strong></a></h5>
+    </div>
+    <div class="button-container">
+        <a href="index.html" class="btn btn-primary">Ana Sayfaya Dön</a>
+        <a href="scene-7.1.html" class="btn btn-secondary">Senaryoya Geç</a>
+    </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

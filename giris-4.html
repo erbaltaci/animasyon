@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Paneli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            background-image: url(img/arkaplan.jpg);
+            /* Arkaplan resmi URL'sini buraya ekleyin */
+            background-size: cover;
+            /* Arkaplanın tam ekrana yayılmasını sağlar */
+            background-position: center;
+            /* Resmin ortalanmasını sağlar */
+            background-repeat: no-repeat;
+            /* Resmin tekrar etmesini engeller */
+        }
+
+        .panel {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1400px;
+            width: 100%;
+            height: 600px;
+            /* Panel yüksekliği ayarlandı */
+            overflow-y: auto;
+            /* Dikey kaydırma özelliği eklendi */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .panel h1 {
+            margin-bottom: 20px;
+        }
+
+        .panel p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+            /* Paragrafların üstteki ve alttaki boşluğunu sıfırla */
+        }
+
+        .button-container {
+            position: fixed;
+            /* Sabit konum */
+            bottom: 20px;
+            /* Alt kenardan 20px */
+            left: 50%;
+            /* Ortala */
+            transform: translateX(-50%);
+            /* Tam merkezde */
+            display: flex;
+            /* Butonları yan yana dizmek için */
+            gap: 20px;
+            /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button,
+        .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover,
+        .gec:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="panel">
+        <p><strong>OTURUM 4: DİJİTAL AYAK İZİM KA&Ccedil; NUMARA?</strong></p>
+        <p><strong>AMA&Ccedil;: </strong>Dijital ayak izi ve &ccedil;erez kavramının &ouml;ğrenilmesi ve y&ouml;netimi.
+        </p>
+        <p><strong>KONU İ&Ccedil;ERİKLERİ:</strong></p>
+        <ul>
+            <li>Dijital ayak izi nedir ve ni&ccedil;in &ouml;nemlidir?</li>
+            <li>&Ccedil;erez acaba ne demek?</li>
+            <li>Tarayıcımın gizlilik ayarlarını nasıl yaparım?</li>
+        </ul>
+        <p><strong>METİN</strong></p>
+        <p><strong>Dijital Ayak İzi Nedir?</strong></p>
+        <p>Dijital ayak izi, dijital ortamlarda paylaştığımız t&uuml;m bilgilerimizin sanal d&uuml;nyada bulunan
+            t&uuml;m herkesin g&ouml;rebileceğini, erişebileceğini, bu bilgilerimizin silinmeyeceğini ve s&uuml;rekli
+            kalabileceğini ifade eden bir tanımdır.</p>
+        <p><strong>Peki bu ayak izlerine &ouml;rnekler nedir?</strong></p>
+        <ul>
+            <li>İnternetten videolar ve filmler izlemek</li>
+            <li>Arama motorlarından herhangi bir şey aramak (bilgi, &ouml;dev vb.)</li>
+            <li>İnternetten alışveriş yapmak</li>
+            <li>Sosyal ağlarda gezinmek</li>
+            <li>&Ccedil;evrimi&ccedil;i sohbet etmek</li>
+            <li>Fotoğraf ve video gibi g&ouml;rseller paylaşmak</li>
+            <li>&Ccedil;evrimi&ccedil;i ortamlarda kişisel bilgilerimizi paylaşmak ile oluşan izlerimizdir.</li>
+        </ul>
+        <p>Kısaca internette yaptığımız her şeydir ve hi&ccedil;bir zaman silinmeyen verilerimizdir.</p>
+        <p>Bu y&uuml;zden dijital ortamlarda t&uuml;m adımlarımıza dikkat etmeliyiz. &Ccedil;&uuml;nk&uuml; bıraktığımız
+            her iz beklenmedik biranda karşımıza &ccedil;ıkabilir ve bizim i&ccedil;in riskli durumlara yol
+            a&ccedil;abilir. Bunun i&ccedil;in bir paylaşımda bulunmadan &ouml;nce şunları kendimize sormamız gerekir;
+        </p>
+        <ul>
+            <li>İnternet &uuml;zerinden hangi bilgilerimi paylaşmam g&uuml;venli ya da g&uuml;vensizdir?</li>
+            <li>Paylaştığım i&ccedil;erikte başkalarının bilmesini istemediğim bir şey var mı?</li>
+            <li>Dijital ortamlarda paylaştığım bu bilgilerin silinmeyecek olması ileride bana herhangi bir sıkıntı
+                yaratır mı<strong>? </strong></li>
+        </ul>
+        <p><strong>&Ccedil;erez Ne Demek? </strong></p>
+        <p>Bir internet sitesini kullandığımızda bu sitelerin, dijital cihazlarımıza (cep telefonu, tablet ve bilgisayar
+            gibi) bıraktığı hatırlatma dosyalarıdır. Bu dosyalarda a&ccedil;tığımız oturum bilgileri gibi &ouml;nemli
+            verilerimiz bulunur.</p>
+        <p>&Ccedil;erezleri &ouml;nlemek i&ccedil;in alabileceğimiz g&uuml;venlik &ouml;nlemleri ise şunlardır;</p>
+        <ul>
+            <li>Bilmediğimiz ve g&uuml;venmediğimiz internet sitelerinde dolaşmamalıyız. &Ccedil;&uuml;nk&uuml;
+                bir&ccedil;ok riskler ve tuzaklar barındırabilir.</li>
+            <li>Sık kullandığımız siteleri sık kullanılanlar listesine yani favorilerimize eklemeliyiz.</li>
+            <li>E-postamıza gelen istenmeyen ve bilinmeyen bağlantılara tıklamamalıyız.</li>
+            <li>Kullandığımız tarayıcıların gizlilik ayarlarını yapmalıyız ve bu ayarları kişiselleştirmeliyiz.</li>
+        </ul>
+        <p><strong>Tarayıcımın Gizlilik Ayarlarını Nasıl Yaparım?</strong></p>
+        <ul>
+            <li>G&uuml;vendiğimiz sitelere &ccedil;erez i&ccedil;in onay verebiliriz. Ancak g&uuml;venmediğimiz
+                sitelerin &ccedil;erez onaylarını devre dışı bırakmalıyız.</li>
+            <li>Tarayıcımızın ge&ccedil;mişi hatırlama se&ccedil;eneği kapatmalıyız.</li>
+            <li>Arama motorları olan FireFox, Google Chrome ve İnternet Explorer gibi uygulamaların &ccedil;erez
+                ayarlarını yapmak i&ccedil;in;</li>
+        </ul>
+        <p>Ara&ccedil;lar- internet se&ccedil;eneklerinden ya da sitede bulunan sağ &uuml;stte yer alan 3 noktadan
+            Ayarlar-Gizlilik b&ouml;l&uuml;m&uuml;nden ulaşarak yapabiliriz.</p>
+
+    </div>
+    <div class="button-container">
+        <!-- İki buton burada yer alacak -->
+        <a href="index.html" class="btn btn-primary">Ana Sayfaya Dön</a>
+        <a href="scene-4.1.html" class="btn btn-primary">Senaryoya Geç</a>
+
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

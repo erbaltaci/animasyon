@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Tamamlama Oyunu</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .word {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .word input {
+            width: 30px;
+            text-align: center;
+            font-size: 20px;
+            margin: 0 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .result img {
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+        <h1>Kelime Tamamlama Oyunu</h1>
+
+        <div id="game">
+            <div class="word">
+                <p>1. Kelime: Be<span><input type="text" id="word1_1" maxlength="1"></span>r<span><input type="text"
+                            id="word1_2" maxlength="1"></span>nt</p>
+            </div>
+
+            <div class="word">
+                <p>2. Kelime: Kor<span><input type="text" id="word2_1" maxlength="1"></span>a<span><input type="text"
+                            id="word2_2" maxlength="1"></span></p>
+            </div>
+
+            <div class="word">
+                <p>3. Kelime: kit<span><input type="text" id="word3_1" maxlength="1"></span>p<span><input type="text"
+                            id="word3_2" maxlength="1"></span>n</p>
+            </div>
+
+            <button onclick="checkAnswers()">Kontrol Et</button>
+        </div>
+
+        <div id="result" class="hidden">
+            <h2>Tebrikler!</h2>
+            <div id="images"></div>
+            <button onclick="nextQuestion()">2. Soruyu Göster</button>
+        </div>
+
+        <div id="question2" class="hidden">
+            <h2>İkinci Soru Burada!</h2>
+            <p>Bu, ikinci sorunun içeriği.</p>
+        </div>
+    </div>
+
+    <script>
+        // Doğru harfler
+        const correctLetters = {
+            word1: ['e', 'a'],
+            word2: ['b', 'u'],
+            word3: ['a', 'r']
+        };
+
+        // Kullanıcının cevaplarını kontrol eden fonksiyon
+        function checkAnswers() {
+            let word1_1 = document.getElementById("word1_1").value.toLowerCase();
+            let word1_2 = document.getElementById("word1_2").value.toLowerCase();
+            let word2_1 = document.getElementById("word2_1").value.toLowerCase();
+            let word2_2 = document.getElementById("word2_2").value.toLowerCase();
+            let word3_1 = document.getElementById("word3_1").value.toLowerCase();
+            let word3_2 = document.getElementById("word3_2").value.toLowerCase();
+
+            let correct = 0;
+            const imagesDiv = document.getElementById("images");
+            imagesDiv.innerHTML = '';  // Önceki sonuçları temizle
+
+            if (word1_1 === correctLetters.word1[0] && word1_2 === correctLetters.word1[1]) {
+                correct++;
+                imagesDiv.innerHTML += '<img src="key1.png" alt="Anahtar 1">';
+            }
+
+            if (word2_1 === correctLetters.word2[0] && word2_2 === correctLetters.word2[1]) {
+                correct++;
+                imagesDiv.innerHTML += '<img src="key2.png" alt="Anahtar 2">';
+            }
+
+            if (word3_1 === correctLetters.word3[0] && word3_2 === correctLetters.word3[1]) {
+                correct++;
+                imagesDiv.innerHTML += '<img src="key3.png" alt="Anahtar 3">';
+            }
+
+            // Eğer tüm cevaplar doğruysa
+            if (correct === 3) {
+                document.getElementById("game").classList.add("hidden");
+                document.getElementById("result").classList.remove("hidden");
+            }
+        }
+
+        // İkinci soruyu gösteren fonksiyon
+        function nextQuestion() {
+            document.getElementById("result").classList.add("hidden");
+            document.getElementById("question2").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+
+</html>

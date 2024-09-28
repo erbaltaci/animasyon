@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Paneli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            background-image: url(img/arkaplan.jpg);
+            /* Arkaplan resmi URL'sini buraya ekleyin */
+            background-size: cover;
+            /* Arkaplanın tam ekrana yayılmasını sağlar */
+            background-position: center;
+            /* Resmin ortalanmasını sağlar */
+            background-repeat: no-repeat;
+            /* Resmin tekrar etmesini engeller */
+        }
+
+        .panel {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1400px;
+            width: 100%;
+            height: 600px;
+            /* Panel yüksekliği ayarlandı */
+            overflow-y: auto;
+            /* Dikey kaydırma özelliği eklendi */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .panel h1 {
+            margin-bottom: 20px;
+        }
+
+        .panel p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+            /* Paragrafların üstteki ve alttaki boşluğunu sıfırla */
+        }
+
+        .button-container {
+            position: fixed;
+            /* Sabit konum */
+            bottom: 20px;
+            /* Alt kenardan 20px */
+            left: 50%;
+            /* Ortala */
+            transform: translateX(-50%);
+            /* Tam merkezde */
+            display: flex;
+            /* Butonları yan yana dizmek için */
+            gap: 20px;
+            /* Butonlar arasındaki boşluk */
+        }
+
+        /* Buton stili */
+        .next-button,
+        .gec {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .next-button:hover,
+        .gec:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="panel">
+        <p><strong>OTURUM 2: GİZLİLİK VE MAHREMİYET: DİKKAT SIRLAR &Ouml;NEMLİDİR!</strong></p>
+        <p><strong>AMA&Ccedil;:</strong> Dijital gizlilik ve mahremiyet kavramlarının &ouml;ğrenilmesi ve bunların
+            &ouml;neminin kavranması.</p>
+        <p><strong>KONU İ&Ccedil;ERİKLERİ: </strong></p>
+        <ul>
+            <li>Kişisel bilgiler (veriler) nedir ve nasıl korunur?</li>
+            <li>Mahremiyet nedir?</li>
+            <li>Dijital d&uuml;nyada mahremiyet/gizlilik kavramı nedir?</li>
+        </ul>
+        <p><strong>METİN</strong></p>
+        <p>Kişisel Verilerin Korunması Kanuna g&ouml;re, kişisel veri,<em>&nbsp;</em><em>&ldquo;Kimliği belirli veya
+                belirlenebilir ger&ccedil;ek kişiye ilişkin her t&uuml;rl&uuml; bilgi&rdquo;</em><em>&nbsp;</em>olarak
+            tanımlanmıştır.</p>
+        <p>Kişisel veri<em>,&nbsp;</em><em>yalnızca ad-soyad, doğum tarihi ve doğum yeri gibi kişinin kesin teşhisini
+                sağlayan bilgiler değildir. Kişinin fiziki, ailevi, ekonomik ve sosyal &ouml;zelliklerine ilişkin
+                bilgiler de kişisel verilerdir. </em></p>
+        <h4><strong>Kişisel Verilerimi Nasıl Korurum?</strong></h4>
+        <ul>
+            <li>&Ccedil;evrimi&ccedil;i paylaşımlarımızda dikkatli olmalıyız. &Ouml;zellikle kişisel bilgilerimizi
+                dijital ortamlarda paylaşmamalıyız.</li>
+            <li>G&uuml;&ccedil;l&uuml; şifreler oluşturmalı ve 2 aşamalı şifreleme tekniğini kullanmalıyız. Google
+                Authenticator gibi programlar ile şifrelerimizin &ccedil;alınmasını &ouml;nlemeliyiz.</li>
+            <li>Herkese a&ccedil;ık olan yerlerde (cafe, restoran vb.) bulunan Wi-Fi bağlantılarını kullanmamalıyız.
+                &Ouml;zellikle bu Wi-Fi bağlantılarıyla &ouml;nemli bilgilerimizi i&ccedil;eren bankacılık işlemleri
+                gibi işlemlerimizi yapmamalıyız.</li>
+            <li>Bilinmeyen kişilerden gelen e-postalara asla tıklamamalıyız. Yine bilinmeyen telefon numaralarından
+                gelen aramalara karşı dikkatli olmalıyız ve asla &ouml;zel bilgilerimiz karşı tarafla paylaşmamalıyız.
+            </li>
+            <li>İnternetten alışveriş yaparken sitelerin ve &ouml;deme y&ouml;ntemlerinin g&uuml;venilir olmasına dikkat
+                etmeliyiz. Ayrıca 3D &ouml;deme y&ouml;ntemi ile alışveriş yapmaya dikkat etmeliyiz.</li>
+        </ul>
+        <p>&nbsp;</p>
+        <p><strong>Mahremiyet Nedir? </strong></p>
+        <p>Mahremiyetin s&ouml;zl&uuml;kteki karşılığı <strong>&lsquo;gizliliktir&rsquo;.</strong> Gizlilik ise temel
+            haklarımızdan birisidir ve sadece fiziksel ortamla ilgili değildir. &Ouml;zel hayatımız, aile hayatımız ve
+            kişisel bilgilerimiz gibi konuları kapsayan bilgiler ve g&ouml;rselleri de kapsamaktadır.</p>
+        <p>Mahremiyet bizim hangi bilgilerimizi kimlerle, ne zaman, nasıl ve ne kadar paylaşacağımıza kendimizin karar
+            verdiği bir s&uuml;reci i&ccedil;erir. Mahremiyet, bize ait olan bilgileri kontrol etme hakkını sunduğu
+            i&ccedil;in &ouml;zerkliğimiz ve karar verme yetkimiz a&ccedil;ısından &ccedil;ok &ouml;nemlidir.</p>
+        <p><strong>&nbsp;</strong></p>
+        <p><strong>&nbsp;</strong></p>
+        <p><strong>Dijital D&uuml;nyada Mahremiyet/Gizlilik </strong></p>
+        <p>Dijital mahremiyet kavramı ise ger&ccedil;ek yaşantımızda olan mahremiyetin dijital ortamdaki bir
+            karşılığıdır.</p>
+        <p>Kişinin ger&ccedil;ek hayatında olduğu gibi dijital ortamda da kendisine ait ve &ouml;zel olan bilgileri
+            herkesle paylaşmaması ve kişisel bir alan oluşturmasını ifade eder. Normal yaşantımızda sadece bize
+            &ouml;zel olan, gizli kalması ve korunması gereken alanlarımızın olduğu gibi dijital d&uuml;nyada da sadece
+            bize &ouml;zel alanlarımızın olması gerekmedir.</p>
+        <p>Kullandığımız bilgisayarlar, tabletler, cep telefonları, oyun konsolları ve Wi-Fi &ouml;zelliği bulunan diğer
+            cihazlar &ccedil;evrimi&ccedil;i etkinliklerimizde mahremiyetimizle ilgili birer risk kaynağını
+            oluştururlar.</p>
+        <p>Dijital d&uuml;nyada yani internet ortamında mahremiyet bilincine sahip olursak mahremiyetimizi koruyabiliriz
+            ve g&uuml;venli bir ortam yaratıp &ouml;zg&uuml;rce dolaşabiliriz.</p>
+    </div>
+    <div class="button-container">
+        <!-- İki buton burada yer alacak -->
+        <a href="index.html" class="btn btn-primary">Ana Sayfaya Dön</a>
+        <a href="scene-2.1.html" class="btn btn-primary">Senaryoya Geç</a>
+
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
