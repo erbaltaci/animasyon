@@ -25,6 +25,25 @@
             background-color: #ffffff;
         }
     </style>
+    <script>
+        window.onload = function () {
+            // Ses dosyasını yükle
+            var backgroundMusic = new Audio('fon.mp3'); // Ses dosyasının yolu
+            backgroundMusic.loop = true; // Döngüye alma
+
+            // 16. saniyeden başlat
+            backgroundMusic.currentTime = 16; // 16. saniyeye ayarla
+
+            backgroundMusic.muted = true; // Sessiz olarak başlat
+            backgroundMusic.play().then(function () {
+                // Ses başarıyla çalındıktan sonra sesi aç
+                backgroundMusic.muted = false;
+                console.log("Ses başarıyla çalındı ve 16. saniyeden başladı.");
+            }).catch(function (error) {
+                console.log("Ses çalınamadı: ", error);
+            });
+        }
+    </script>
 
     <script type="text/javascript" src="player.js"></script>
     <script type="text/javascript">
