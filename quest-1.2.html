@@ -113,6 +113,9 @@
                     window.location.href = 'lastScene1.html'; // Yönlendirilmek istenilen sayfanın yolu
                 }, 4000); // 2 saniye sonra yönlendirilecek
             } else {
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play(); // Ses dosyasını çal
+
                 document.getElementById('feedback').textContent = "Yanlış seçenekler var, tekrar deneyin.";
                 document.getElementById('feedback').style.color = "red";
             }
