@@ -25,15 +25,13 @@
             // Ses dosyasını yükle
             var backgroundMusic = new Audio('fon.mp3'); // Ses dosyasının yolu
             backgroundMusic.loop = true; // Döngüye alma
-            backgroundMusic.play(); // Oynat
-
-            // Tarayıcıların otomatik oynatmaya izin vermediği durumlarda kullanıcı etkileşimi gerekebilir
-            backgroundMusic.addEventListener('play', function () {
-                console.log("Ses dosyası oynatılıyor...");
-            });
-
-            backgroundMusic.addEventListener('error', function () {
-                console.log("Ses dosyası yüklenirken bir hata oluştu.");
+            backgroundMusic.muted = true; // Sessiz olarak başlat
+            backgroundMusic.play().then(function () {
+                // Ses başarıyla çalındıktan sonra sesi aç
+                backgroundMusic.muted = false;
+                console.log("Ses başarıyla çalındı.");
+            }).catch(function (error) {
+                console.log("Ses çalınamadı: ", error);
             });
         }
     </script>
