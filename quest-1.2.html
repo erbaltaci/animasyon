@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,30 +21,36 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
         }
+
         .question {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .options {
             text-align: left;
             margin-bottom: 20px;
         }
+
         .options label {
             font-size: 18px;
             display: block;
             margin-bottom: 10px;
         }
+
         button {
             margin: 5px;
             padding: 10px 20px;
             font-size: 16px;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
@@ -51,21 +58,26 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
         <div>
             <div class="question" id="question">Hadi Son Adımı da Tamamla ve Hazineye Ulaş</div>
             <div class="options">
-                <label><input type="checkbox" id="option1"> •	Bilgiye kolayca ve güvenli bir şekilde ulaşabilir.</label>
+                <label><input type="checkbox" id="option1"> • Bilgiye kolayca ve güvenli bir şekilde ulaşabilir.</label>
                 <label><input type="checkbox" id="option2"> Seçenek 2</label>
-                <label><input type="checkbox" id="option3"> •	Dijital ortamda eriştiği kaynakların güvenilir olup olmadığına karar verebilir ve bu kaynakları eleştirel bir şekilde değerlendirebilir.</label>
+                <label><input type="checkbox" id="option3"> • Dijital ortamda eriştiği kaynakların güvenilir olup
+                    olmadığına karar verebilir ve bu kaynakları eleştirel bir şekilde değerlendirebilir.</label>
                 <label><input type="checkbox" id="option4"> Seçenek 4</label>
-                <label><input type="checkbox" id="option5"> •	Dijital araçları kullanarak farklı içerikler üretebilir.</label>
-                <label><input type="checkbox" id="option6"> •	Dijital ortamlarda güvenlik bilincine sahiptir.</label>
+                <label><input type="checkbox" id="option5"> • Dijital araçları kullanarak farklı içerikler
+                    üretebilir.</label>
+                <label><input type="checkbox" id="option6"> • Dijital ortamlarda güvenlik bilincine sahiptir.</label>
                 <label><input type="checkbox" id="option7"> Seçenek 4</label>
-                <label><input type="checkbox" id="option8"> •	Dijital ortamda güvenli ve sağlıklı iletişim becerisine sahiptir.</label>
-                <label><input type="checkbox" id="option9"> •	Sanal zorbalıktan hem kendini koruyabilir hem de azaltılmasını sağlayabilir.</label>
+                <label><input type="checkbox" id="option8"> • Dijital ortamda güvenli ve sağlıklı iletişim becerisine
+                    sahiptir.</label>
+                <label><input type="checkbox" id="option9"> • Sanal zorbalıktan hem kendini koruyabilir hem de
+                    azaltılmasını sağlayabilir.</label>
             </div>
             <button onclick="checkAnswers()">Cevapları Kontrol Et</button>
             <div class="feedback" id="feedback"></div>
@@ -73,11 +85,11 @@
     </div>
 
     <script>
-        const correctAnswers = [0,2,4,5,7,8];  // Doğru olan seçeneklerin indeksleri (0 tabanlı indeks)
-        
+        const correctAnswers = [0, 2, 4, 5, 7, 8];  // Doğru olan seçeneklerin indeksleri (0 tabanlı indeks)
+
         function checkAnswers() {
             const selectedAnswers = [];
-            
+
             if (document.getElementById('option1').checked) selectedAnswers.push(0);
             if (document.getElementById('option2').checked) selectedAnswers.push(1); // Yanlış bir seçenek
             if (document.getElementById('option3').checked) selectedAnswers.push(2);
@@ -87,12 +99,17 @@
             if (document.getElementById('option7').checked) selectedAnswers.push(6); // Yanlış bir seçenek
             if (document.getElementById('option8').checked) selectedAnswers.push(7);
             if (document.getElementById('option9').checked) selectedAnswers.push(8);
-            
+
             if (arraysEqual(selectedAnswers, correctAnswers)) {
+                // Ses dosyasını oynat
+                var correctSound = new Audio('dogru.mp3'); // Ses dosyasının yolu
+                correctSound.play(); // Ses dosyasını çal
+
                 document.getElementById('feedback').textContent = "Tebrikler! Doğru cevapları seçtiniz.";
                 document.getElementById('feedback').style.color = "green";
+
                 // Doğru cevaplar seçildiğinde sayfayı yönlendirme
-                setTimeout(function() {
+                setTimeout(function () {
                     window.location.href = 'lastScene1.html'; // Yönlendirilmek istenilen sayfanın yolu
                 }, 2000); // 2 saniye sonra yönlendirilecek
             } else {
@@ -107,4 +124,5 @@
     </script>
 
 </body>
+
 </html>
