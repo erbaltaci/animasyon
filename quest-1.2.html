@@ -102,7 +102,7 @@
 
             if (arraysEqual(selectedAnswers, correctAnswers)) {
                 // Ses dosyasını oynat
-                var correctSound = new Audio('dogru.mp3'); // Ses dosyasının yolu
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
                 correctSound.play(); // Ses dosyasını çal
 
                 document.getElementById('feedback').textContent = "Tebrikler! Doğru cevapları seçtiniz.";
@@ -111,7 +111,7 @@
                 // Doğru cevaplar seçildiğinde sayfayı yönlendirme
                 setTimeout(function () {
                     window.location.href = 'lastScene1.html'; // Yönlendirilmek istenilen sayfanın yolu
-                }, 2000); // 2 saniye sonra yönlendirilecek
+                }, 4000); // 2 saniye sonra yönlendirilecek
             } else {
                 document.getElementById('feedback').textContent = "Yanlış seçenekler var, tekrar deneyin.";
                 document.getElementById('feedback').style.color = "red";
