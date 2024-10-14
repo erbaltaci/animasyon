@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,37 +21,44 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
         }
+
         .question {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         button {
             margin: 5px;
             padding: 10px 20px;
             font-size: 16px;
             width: 100%;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         .puzzle-sentence {
             margin-bottom: 20px;
             font-size: 18px;
             line-height: 1.6;
         }
+
         .puzzle-box {
             display: inline-block;
             width: 150px;
@@ -61,12 +69,14 @@
             margin-left: 10px;
             vertical-align: middle;
         }
+
         .word-box {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-top: 20px;
         }
+
         .word {
             width: 120px;
             height: 40px;
@@ -77,26 +87,28 @@
             border: 2px solid #333;
             cursor: pointer;
         }
+
         .highlight {
             color: green;
             font-weight: bold;
         }
     </style>
 </head>
+
 <body>
-    
-        
-        
 
-        <!-- Butonlar -->
-        <button class="btn btn-info" onclick="checkAnswer(false)">Buton 1</button>
-        <button class="btn btn-info" onclick="checkAnswer(false)">Buton 2</button>
-        <button class="btn btn-info" onclick="checkAnswer(false)">Buton 3</button>
-        <button class="btn btn-info" onclick="checkAnswer(true)">Buton 4</button>
 
-        <!-- Geri bildirim -->
-        <div id="feedback" class="feedback"></div>
- 
+
+
+    <!-- Butonlar -->
+    <button class="btn btn-info" onclick="checkAnswer(false)">Buton 1</button>
+    <button class="btn btn-info" onclick="checkAnswer(false)">Buton 2</button>
+    <button class="btn btn-info" onclick="checkAnswer(false)">Buton 3</button>
+    <button class="btn btn-info" onclick="checkAnswer(true)">Buton 4</button>
+
+    <!-- Geri bildirim -->
+    <div id="feedback" class="feedback"></div>
+
 
     <script>
         // Butona tıklandığında çalışacak fonksiyon
@@ -105,15 +117,20 @@
             if (isCorrect) {
                 feedback.textContent = "Tebrikler, doğru seçim!";
                 feedback.style.color = "green";
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
                 // 2 saniye sonra başka bir sayfaya yönlendirme
-                setTimeout(function() {
+                setTimeout(function () {
                     window.location.href = 'lastScene3.html'; // Doğru sayfaya yönlendirin
-                }, 2000);
+                }, 4000);
             } else {
                 feedback.textContent = "Yanlış seçim, tekrar deneyin!";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 </body>
+
 </html>

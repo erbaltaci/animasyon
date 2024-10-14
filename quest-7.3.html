@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Tamamlama Oyunu</title>
+    <style>
+        body,
+        html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('img/özgür.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .game-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .word {
+            font-size: 20px;
+            margin: 5px;
+        }
+
+        .word input {
+            width: 25px;
+            text-align: center;
+            font-size: 20px;
+            margin: 4px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .result img {
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+        <h1>Kelime Tamamlama Oyunu</h1>
+
+
+        <div id="game">
+            <div class="word">
+                <p>D<span><input type="text" id="word1_1" maxlength="1"></span>j<span><input type="text" id="word1_2"
+                            maxlength="1">
+                        t<span><input type="text" id="word1_3" maxlength="1"></span>l <br><span>
+                            O<span><input type="text" id="word1_4" maxlength="1"></span>ury<span><input type="text"
+                                    id="word1_5" maxlength="1">
+                                z<span><input type="text" id="word1_6" maxlength="1"></span>rlık<span>
+
+
+
+
+                </p>
+            </div>
+
+            <button onclick="checkAnswers()">Kontrol Et</button>
+        </div>
+
+        <div id="result" class="hidden">
+            <h2 style="color: orangered;">DİJİTAL OKURYAZARLIK </h2>
+            <h3>TEBRİKLER!</h3>
+            <div id="images">
+                <!-- Örnek resim -->
+
+            </div>
+        </div>
+
+        <script>
+            // Doğru harfler
+            const correctLetters = {
+                word1: ['i', 'i', 'a', 'k', 'a', 'a']
+            };
+
+            // Kullanıcının cevaplarını kontrol eden fonksiyon
+            function checkAnswers() {
+                let word1_1 = document.getElementById("word1_1").value.toLowerCase();
+                let word1_2 = document.getElementById("word1_2").value.toLowerCase();
+                let word1_3 = document.getElementById("word1_3").value.toLowerCase();
+                let word1_4 = document.getElementById("word1_4").value.toLowerCase();
+                let word1_5 = document.getElementById("word1_5").value.toLowerCase();
+                let word1_6 = document.getElementById("word1_6").value.toLowerCase();
+
+                // Cevapları kontrol et
+                if (word1_1 === correctLetters.word1[0] &&
+                    word1_2 === correctLetters.word1[1] &&
+                    word1_3 === correctLetters.word1[2] &&
+                    word1_4 === correctLetters.word1[3] &&
+                    word1_5 === correctLetters.word1[4] &&
+                    word1_6 === correctLetters.word1[5]) {
+                    // Eğer doğruysa tebrik ekranını göster
+                    document.getElementById("game").classList.add("hidden");
+                    document.getElementById("result").classList.remove("hidden");
+                    var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                    correctSound.play();
+                    setTimeout(function () {
+                        window.location.href = 'scene-7.3.html'; // Doğru sayfaya yönlendirin
+                    }, 4000);
+                } else {
+                    alert("Yanlış cevaplar var, lütfen tekrar deneyin.");
+                    var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                    Sound.play();
+                }
+            }
+        </script>
+
+</body>
+
+</html>

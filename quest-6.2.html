@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.9);
@@ -28,28 +30,34 @@
             width: 60%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .puzzle-text {
             font-size: 20px;
             margin-bottom: 20px;
         }
+
         .input-group {
             display: flex;
             justify-content: center;
             margin-bottom: 10px;
         }
+
         .input-group input {
             text-align: center;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         button {
             margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -90,15 +98,20 @@
             if (isCorrect) {
                 feedback.textContent = "Tebrikler! Tüm kelimeleri doğru girdiniz.";
                 feedback.style.color = "green";
-                setTimeout(function() {
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
                     window.location.href = 'lastScene6.html'; // Doğru sayfaya yönlendirin
-                }, 2000);
+                }, 4000);
             } else {
                 feedback.textContent = "Yanlış cevaplar var. Lütfen tekrar deneyin.";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 
 </body>
+
 </html>

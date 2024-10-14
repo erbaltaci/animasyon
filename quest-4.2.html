@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,53 +16,62 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('img/izo.svg');
+            background-image: url('img/cerez.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
         }
+
         .question {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         button {
             margin: 5px;
             padding: 10px 20px;
             font-size: 16px;
             width: 100%;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         #nextPageButton {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 18px;
             display: none;
         }
+
         #image-container {
             margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 10px;
         }
+
         .small-image {
             width: 50px;
             height: 50px;
         }
+
         /* Bulmaca stili */
         .puzzle-box {
             margin: 20px auto;
@@ -70,7 +80,8 @@
             gap: 10px;
         }
 
-        .slot, .word {
+        .slot,
+        .word {
             width: 100px;
             height: 50px;
             border: 2px solid #333;
@@ -97,26 +108,27 @@
         }
 
         #secondPuzzle {
-           
+
             margin-top: 20px;
         }
-        
+
         .highlight {
             color: green;
             font-weight: bold;
         }
     </style>
 </head>
+
 <body>
-   
-        
-        <!-- İkinci bulmaca alanı -->
-        <div id="secondPuzzle">
-            <h2 class="question">Dosyanın ne olduğunu tahmin et bakalım...</h2>
-            <p> <b>........</b></p>
-            <div class="form-group">
-                <input type="text" id="input1" class="form-control mb-2" placeholder="Dosyanın adını yaz.">
-               
+
+
+    <!-- İkinci bulmaca alanı -->
+    <div id="secondPuzzle">
+        <h2 class="question">Dosyanın ne olduğunu tahmin et bakalım...</h2>
+        <p> <b>İpucu arka planda..</b></p>
+        <div class="form-group">
+            <input type="text" id="input1" class="form-control mb-2" placeholder="Dosyanın adını yaz.">
+
             <button class="btn btn-primary" onclick="checkSecondPuzzle()">Cevabı Kontrol Et</button>
             <div id="secondFeedback" class="feedback"></div>
             <div id="finalResult" class="mt-4"></div>
@@ -124,13 +136,13 @@
     </div>
 
     <script>
-        
-    
+
+
 
         // İkinci bulmaca çözümü kontrol et ve boşluklu yerlere ekle
         function checkSecondPuzzle() {
             var input1 = document.getElementById('input1').value.trim().toLowerCase();
-            
+
 
             var feedback = document.getElementById('secondFeedback');
             var finalResult = document.getElementById('finalResult');
@@ -138,18 +150,23 @@
             if (input1 === "çerez") {
                 feedback.textContent = "Tebrikler! Doğru cevabı buldunuz!";
                 feedback.style.color = "green";
-                setTimeout(function() {
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
                     window.location.href = 'index.html'; // Doğru sayfaya yönlendirin
-                }, 3000);
-                
+                }, 4000);
+
 
                 // Boşlukları doldur ve yeşil renkte göster
                 finalResult.innerHTML = `<span class="highlight">${input1}</span>,`;
             } else {
                 feedback.textContent = "Yanlış! Tekrar deneyin.";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 </body>
+
 </html>

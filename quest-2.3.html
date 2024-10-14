@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelime Tamamlama Oyunu</title>
+    <style>
+        body,
+        html {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('img/peri.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .game-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .word {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .word input {
+            width: 30px;
+            text-align: center;
+            font-size: 20px;
+            margin: 0 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .result img {
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-container">
+        <h1>Kelime Tamamlama Oyunu</h1>
+        <p>Bizim hangi bilgilerimizi kimlerle, ne zaman, nasıl ve ne kadar paylaşacağımıza kendimizin karar verdiği bir
+            süreci içeren ve bize ait-özel olan bilgilerimizi kapsayan kişisel bir alandır.</p>
+
+        <div id="game">
+            <div class="word">
+                <p>M<span><input type="text" id="word1_1" maxlength="1"></span>h<span><input type="text" id="word1_2"
+                            maxlength="1"></span>e<span><input type="text" id="word1_3"
+                            maxlength="1"></span>i<span><input type="text" id="word1_4" maxlength="1"></span>et</p>
+            </div>
+
+            <button onclick="checkAnswers()">Kontrol Et</button>
+        </div>
+
+        <div id="result" class="hidden">
+            <h2 style="color: orangered;">MAHREMİYET </h2>
+            <h3>TEBRİKLER!</h3>
+            <div id="images">
+                <!-- Örnek resim -->
+
+            </div>
+        </div>
+
+        <script>
+            // Doğru harfler
+            const correctLetters = {
+                word1: ['a', 'r', 'm', 'y']
+            };
+
+            // Kullanıcının cevaplarını kontrol eden fonksiyon
+            function checkAnswers() {
+                let word1_1 = document.getElementById("word1_1").value.toLowerCase();
+                let word1_2 = document.getElementById("word1_2").value.toLowerCase();
+                let word1_3 = document.getElementById("word1_3").value.toLowerCase();
+                let word1_4 = document.getElementById("word1_4").value.toLowerCase();
+
+                // Cevapları kontrol et
+                if (word1_1 === correctLetters.word1[0] &&
+                    word1_2 === correctLetters.word1[1] &&
+                    word1_3 === correctLetters.word1[2] &&
+                    word1_4 === correctLetters.word1[3]) {
+                    // Eğer doğruysa tebrik ekranını göster
+                    document.getElementById("game").classList.add("hidden");
+                    document.getElementById("result").classList.remove("hidden");
+                    var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                    correctSound.play();
+                    setTimeout(function () {
+                        window.location.href = 'lastScene2.html'; // Yönlendirilmek istenilen sayfanın yolu
+                    }, 4000); // 2 saniye sonra yönlendirilecek
+                } else {
+                    alert("Yanlış cevaplar var, lütfen tekrar deneyin.");
+                    var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                    Sound.play();
+                }
+            }
+        </script>
+
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.9);
@@ -28,10 +30,12 @@
             width: 60%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .puzzle-text {
             font-size: 20px;
             margin-bottom: 20px;
         }
+
         .input-box {
             width: 150px;
             height: 30px;
@@ -40,6 +44,7 @@
             display: inline-block;
             vertical-align: middle;
         }
+
         .word {
             width: 120px;
             height: 40px;
@@ -52,6 +57,7 @@
             margin: 5px;
             padding: 5px;
         }
+
         .drop-box {
             border: 2px dashed #333;
             width: 120px;
@@ -62,33 +68,36 @@
             text-align: center;
             padding: 5px;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         button {
             margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
         <h1>Ali Nasıl Şikayet Edecek?</h1>
         <p class="puzzle-text">
-            1. Adım: Şikayet etmek istenilen paylaşımın 
-            <div class="drop-box" id="drop1" ondrop="drop(event, 'sağ üst')" ondragover="allowDrop(event)"></div>
-            kısmındaki üç nokta seçilir ve 
-            <div class="drop-box" id="drop2" ondrop="drop(event, 'şikayet et')" ondragover="allowDrop(event)"></div> 
-            seçeneği işaretlenir.
+            1. Adım: Şikayet etmek istenilen paylaşımın
+        <div class="drop-box" id="drop1" ondrop="drop(event, 'sağ üst')" ondragover="allowDrop(event)"></div>
+        kısmındaki üç nokta seçilir ve
+        <div class="drop-box" id="drop2" ondrop="drop(event, 'şikayet et')" ondragover="allowDrop(event)"></div>
+        seçeneği işaretlenir.
         </p>
         <p class="puzzle-text">
-            2. Adım: Şikayet nedeni olarak 
-            <div class="drop-box" id="drop3" ondrop="drop(event, 'uygunsuz')" ondragover="allowDrop(event)"></div>
-            seçeneği işaretlenir ve şikayet et
-            <div class="drop-box" id="drop4" ondrop="drop(event, 'butonuna')" ondragover="allowDrop(event)"></div>
-            tıklanır.
+            2. Adım: Şikayet nedeni olarak
+        <div class="drop-box" id="drop3" ondrop="drop(event, 'uygunsuz')" ondragover="allowDrop(event)"></div>
+        seçeneği işaretlenir ve şikayet et
+        <div class="drop-box" id="drop4" ondrop="drop(event, 'butonuna')" ondragover="allowDrop(event)"></div>
+        tıklanır.
         </p>
 
         <!-- Sürüklenebilir kelimeler -->
@@ -96,7 +105,7 @@
             <div id="uygunsuz" class="word" draggable="true" ondragstart="drag(event)">uygunsuz</div>
             <div id="şikayet et" class="word" draggable="true" ondragstart="drag(event)">şikayet et</div>
             <div id="sağ üst" class="word" draggable="true" ondragstart="drag(event)">sağ üst</div>
-            
+
             <div id="butonuna" class="word" draggable="true" ondragstart="drag(event)">butonuna</div>
         </div>
 
@@ -146,15 +155,20 @@
             if (isCorrect) {
                 feedback.textContent = "Tebrikler! Ali artık nasıl şikayet edeceğini biliyor.";
                 feedback.style.color = "green";
-                setTimeout(function() {
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
                     window.location.href = 'index.html'; // Doğru sayfaya yönlendirin
-                }, 3500);
+                }, 4000);
             } else {
                 feedback.textContent = "Bazı kelimeler yanlış eşleştirildi. Tekrar deneyin!";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 
 </body>
+
 </html>

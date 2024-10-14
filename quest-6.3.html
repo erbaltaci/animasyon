@@ -16,7 +16,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('img/izo.svg');
+            background-image: url('img/selim.svg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -101,29 +101,28 @@
         <p>Aşağıdaki boşluklara doğru kelimeleri sürükleyip bırakın:</p>
 
         <!-- Cümleler ve boşluklar -->
-        <div class="puzzle-sentence">• İnternetten "<span id="slot1" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" izlemek</div>
-        <div class="puzzle-sentence">• İnternetten "<span id="slot2" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" yapmak.</div>
-        <div class="puzzle-sentence">• Çevrimiçi "<span id="slot3" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" etmek."
+        <div class="puzzle-sentence"><span id="slot1" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>kabul etmeden önce düşün!</div>
+        <div class="puzzle-sentence">Paylaşmadan önce<span id="slot2" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span></div>
+        <div class="puzzle-sentence"><span id="slot3" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>önce düşün!
         </div>
-        <div class="puzzle-sentence">•"<span id="slot4" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" gibi görseller paylaşmak.</div>
-        <div class="puzzle-sentence">• Çevrimiçi ortamlarda "<span id="slot5" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" paylaşmak.</div>
-        <div class="puzzle-sentence">• "<span id="slot6" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" gezinmek. "</div>
+        <div class="puzzle-sentence">Durumu<span id="slot4" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span></div>
+        <div class="puzzle-sentence">Asla<span id="slot5" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span></div>
+
 
 
         <!-- Karışık kelimeler -->
         <div id="words" class="word-box">
-            <div id="word1" class="word" draggable="true" ondragstart="drag(event)">alışveriş</div>
-            <div id="word2" class="word" draggable="true" ondragstart="drag(event)">sohbet</div>
-            <div id="word3" class="word" draggable="true" ondragstart="drag(event)">videolar ve filmler</div>
-            <div id="word4" class="word" draggable="true" ondragstart="drag(event)">Sosyal ağlarda</div>
-            <div id="word5" class="word" draggable="true" ondragstart="drag(event)">Fotoğraf ve video</div>
-            <div id="word6" class="word" draggable="true" ondragstart="drag(event)">kişisel bilgilerimizi</div>
+            <div id="word1" class="word" draggable="true" ondragstart="drag(event)">Bildir</div>
+            <div id="word2" class="word" draggable="true" ondragstart="drag(event)">saklama</div>
+            <div id="word3" class="word" draggable="true" ondragstart="drag(event)">düşün!</div>
+            <div id="word4" class="word" draggable="true" ondragstart="drag(event)">Arkadaşlık isteklerini</div>
+            <div id="word5" class="word" draggable="true" ondragstart="drag(event)">Göndermeden</div>
+
 
 
         </div>
@@ -159,19 +158,19 @@
             var slot3 = document.getElementById('slot3').textContent.trim();
             var slot4 = document.getElementById('slot4').textContent.trim();
             var slot5 = document.getElementById('slot5').textContent.trim();
-            var slot6 = document.getElementById('slot6').textContent.trim();
+
 
 
 
             var feedback = document.getElementById('feedback');
 
-            if (slot1 === "videolar ve filmler" && slot2 === "alışveriş" && slot3 === "sohbet" && slot4 === "Fotoğraf ve video" && slot5 === "kişisel bilgilerimizi" && slot6 === "Sosyal ağlarda") {
+            if (slot1 === "Arkadaşlık isteklerini" && slot2 === "düşün!" && slot3 === "Göndermeden" && slot4 === "Bildir" && slot5 === "saklama") {
                 feedback.textContent = "Tebrikler! Tüm cümleleri doğru tamamladınız.";
                 feedback.style.color = "green";
                 var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
                 correctSound.play();
                 setTimeout(function () {
-                    window.location.href = 'scene-4.2.html'; // Yönlendirilmek istenilen sayfanın yolu
+                    window.location.href = 'scene-6.2.html'; // Doğru sayfaya yönlendirin
                 }, 4000); // 2 saniye sonra yönlendirilecek
             } else {
                 feedback.textContent = "Bazı cümleler yanlış. Lütfen tekrar deneyin.";

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.9);
@@ -28,27 +30,33 @@
             width: 60%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .question {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .answers {
             margin-bottom: 20px;
         }
+
         button {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 18px;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         #drag-drop-section {
             display: none;
             margin-top: 30px;
         }
+
         .pair-container {
             display: flex;
             justify-content: center;
@@ -56,6 +64,7 @@
             gap: 10px;
             margin-bottom: 20px;
         }
+
         .word {
             width: 120px;
             height: 40px;
@@ -67,6 +76,7 @@
             cursor: pointer;
             padding: 5px;
         }
+
         .drop-box {
             width: 150px;
             height: 40px;
@@ -78,6 +88,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- İlk soru -->
@@ -85,8 +96,10 @@
         <h1 class="question">Selim'in izin vermemesi gereken madde nedir?</h1>
         <div class="answers">
             <button class="btn btn-primary" onclick="checkAnswer('Müzik Oynatma')">Müzik Oynatma</button>
-            <button class="btn btn-primary" onclick="checkAnswer('Konum Bildirimlerine İzin Vermek')">Konum Bildirimlerine İzin Vermek</button>
-            <button class="btn btn-primary" onclick="checkAnswer('Müzik Dosyalarını İndirmek')">Müzik Dosyalarını İndirmek</button>
+            <button class="btn btn-primary" onclick="checkAnswer('Konum Bildirimlerine İzin Vermek')">Konum
+                Bildirimlerine İzin Vermek</button>
+            <button class="btn btn-primary" onclick="checkAnswer('Müzik Dosyalarını İndirmek')">Müzik Dosyalarını
+                İndirmek</button>
         </div>
         <div id="feedback" class="feedback"></div>
     </div>
@@ -98,14 +111,19 @@
             if (answer === 'Konum Bildirimlerine İzin Vermek') {
                 feedback.textContent = "Doğru cevap! Bir sonraki soruya geçiyorsunuz...";
                 feedback.style.color = "green";
-                setTimeout(function() {
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
                     window.location.href = 'scene-6.2.html'; // Doğru sayfaya yönlendirin
-                }, 2000);
+                }, 4000);
             } else {
                 feedback.textContent = "Yanlış cevap, tekrar deneyin!";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 </body>
+
 </html>

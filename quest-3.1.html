@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,37 +21,44 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
         }
+
         .question {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         button {
             margin: 5px;
             padding: 10px 20px;
             font-size: 16px;
             width: 100%;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         .puzzle-sentence {
             margin-bottom: 20px;
             font-size: 18px;
             line-height: 1.6;
         }
+
         .puzzle-box {
             display: inline-block;
             width: 150px;
@@ -61,12 +69,14 @@
             margin-left: 10px;
             vertical-align: middle;
         }
+
         .word-box {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-top: 20px;
         }
+
         .word {
             width: 120px;
             height: 40px;
@@ -77,38 +87,49 @@
             border: 2px solid #333;
             cursor: pointer;
         }
+
         .highlight {
             color: green;
             font-weight: bold;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="question">Güvenli İnternet Bulmacası</h1>
         <p>Aşağıdaki boşluklara doğru kelimeleri sürükleyip bırakın:</p>
 
         <!-- Cümleler ve boşluklar -->
-        <div class="puzzle-sentence">• Tahmin edilmesi  "<span id="slot1" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" oluşturmalıyız..</div>
-        <div class="puzzle-sentence">• Şifrelerimiz "<span id="slot2" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" içermelidir.</div>
-        <div class="puzzle-sentence">• Şifrelerimiz en az  "<span id="slot3" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" uzunluğunda olmalıdır." 
+        <div class="puzzle-sentence">• Tahmin edilmesi "<span id="slot1" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" oluşturmalıyız..</div>
+        <div class="puzzle-sentence">• Şifrelerimiz "<span id="slot2" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" içermelidir.</div>
+        <div class="puzzle-sentence">• Şifrelerimiz en az "<span id="slot3" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" uzunluğunda olmalıdır."
         </div>
-        <div class="puzzle-sentence">• Şifrelerimizi bir  "<span id="slot4" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" saklamalıyız.</div>
-        <div class="puzzle-sentence">• Oluşturduğumuz bir şifreyi her yerde"<span id="slot5" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>"</div>
-        <div class="puzzle-sentence">• "<span id="slot6" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" olan Wi-Fi ağlarına bağlanmamalıyız.  "</div>
-        <div class="puzzle-sentence">• Cihazlarımıza  "<span id="slot7" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" Koymalıyız.</div>
-        <div class="puzzle-sentence">• Şifrelerimizi  "<span id="slot8" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>"</div>
-        
+        <div class="puzzle-sentence">• Şifrelerimizi bir "<span id="slot4" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" saklamalıyız.</div>
+        <div class="puzzle-sentence">• Oluşturduğumuz bir şifreyi her yerde"<span id="slot5" class="puzzle-box"
+                ondrop="drop(event)" ondragover="allowDrop(event)"></span>"</div>
+        <div class="puzzle-sentence">• "<span id="slot6" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" olan Wi-Fi ağlarına bağlanmamalıyız. "</div>
+        <div class="puzzle-sentence">• Cihazlarımıza "<span id="slot7" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" Koymalıyız.</div>
+        <div class="puzzle-sentence">• Şifrelerimizi "<span id="slot8" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>"</div>
+
         <!-- Karışık kelimeler -->
         <div id="words" class="word-box">
             <div id="word1" class="word" draggable="true" ondragstart="drag(event)">8 karakter</div>
             <div id="word2" class="word" draggable="true" ondragstart="drag(event)">kullanmamalıyız</div>
             <div id="word3" class="word" draggable="true" ondragstart="drag(event)">zor ve güçlü şifreler</div>
-            <div id="word4" class="word" draggable="true" ondragstart="drag(event)">tuş kilidi ve  güçlü şifreler</div>
-            
+            <div id="word4" class="word" draggable="true" ondragstart="drag(event)">tuş kilidi ve güçlü şifreler</div>
+
             <div id="word5" class="word" draggable="true" ondragstart="drag(event)">Şifresiz</div>
             <div id="word6" class="word" draggable="true" ondragstart="drag(event)">paylaşmamalıyız</div>
-            <div id="word7" class="word" draggable="true" ondragstart="drag(event)">büyük harfler, küçük harfler, sayılar ve semboller</div>
+            <div id="word7" class="word" draggable="true" ondragstart="drag(event)">büyük harfler, küçük harfler,
+                sayılar ve semboller</div>
             <div id="word8" class="word" draggable="true" ondragstart="drag(event)">şifre yöneticisinde </div>
         </div>
 
@@ -153,14 +174,19 @@
             if (slot1 === "zor ve güçlü şifreler" && slot2 === "büyük harfler, küçük harfler, sayılar ve semboller" && slot3 === "8 karakter" && slot4 === "şifre yöneticisinde" && slot5 === "kullanmamalıyız" && slot6 === "Şifresiz" && slot7 === "tuş kilidi ve  güçlü şifreler" && slot8 === "paylaşmamalıyız") {
                 feedback.textContent = "Tebrikler! Tüm cümleleri doğru tamamladınız.";
                 feedback.style.color = "green";
-                setTimeout(function() {
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
                     window.location.href = 'scene-3.2.html'; // Yönlendirilmek istenilen sayfanın yolu
-                }, 2000); // 2 saniye sonra yönlendirilecek
+                }, 4000); // 2 saniye sonra yönlendirilecek
             } else {
                 feedback.textContent = "Bazı cümleler yanlış. Lütfen tekrar deneyin.";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 </body>
+
 </html>

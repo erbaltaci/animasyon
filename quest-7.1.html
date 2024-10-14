@@ -150,9 +150,11 @@
             if (input1 === "dijital okuryazarlık") {
                 feedback.textContent = "Tebrikler! Doğru cevabı buldunuz!";
                 feedback.style.color = "ice blue";
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
                 setTimeout(function () {
                     window.location.href = 'scene-7.3.html'; // Doğru sayfaya yönlendirin
-                }, 3000);
+                }, 4000);
 
 
                 // Boşlukları doldur ve yeşil renkte göster
@@ -160,6 +162,8 @@
             } else {
                 feedback.textContent = "Yanlış! Tekrar deneyin.";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>

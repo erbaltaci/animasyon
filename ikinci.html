@@ -180,6 +180,8 @@
             } else {
                 feedback.textContent = "Yanlış cevaplar var. Lütfen tekrar deneyin.";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>

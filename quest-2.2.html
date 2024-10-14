@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,37 +21,44 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
         }
+
         .question {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         button {
             margin: 5px;
             padding: 10px 20px;
             font-size: 16px;
             width: 100%;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         .puzzle-sentence {
             margin-bottom: 20px;
             font-size: 18px;
             line-height: 1.6;
         }
+
         .puzzle-box {
             display: inline-block;
             width: 150px;
@@ -61,12 +69,14 @@
             margin-left: 10px;
             vertical-align: middle;
         }
+
         .word-box {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin-top: 20px;
         }
+
         .word {
             width: 120px;
             height: 40px;
@@ -77,24 +87,33 @@
             border: 2px solid #333;
             cursor: pointer;
         }
+
         .highlight {
             color: green;
             font-weight: bold;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="question">Güvenli İnternet Bulmacası</h1>
         <p>Aşağıdaki boşluklara doğru kelimeleri sürükleyip bırakın:</p>
 
         <!-- Cümleler ve boşluklar -->
-        <div class="puzzle-sentence">• Çevrimiçi paylaşımlara "<span id="slot1" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" et.</div>
-        <div class="puzzle-sentence">• "<span id="slot2" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" dijital ortamlarda paylaşma.</div>
-        <div class="puzzle-sentence">• Güçlü "<span id="slot3" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" oluştur ve "2 aşamalı" şifreleme tekniğini kullan.</div>
-        <div class="puzzle-sentence">• Herkese açık olan yerlerde "<span id="slot4" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" kullanma.</div>
-        <div class="puzzle-sentence">• Bilinmeyen kişilerden gelen "<span id="slot5" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" asla tıklama.</div>
-        <div class="puzzle-sentence">• İnternetten "<span id="slot6" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" yaparken sitelerin ve ödeme yöntemlerinin "<span id="slot7" class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" olmasına dikkat et.</div>
+        <div class="puzzle-sentence">• Çevrimiçi paylaşımlara "<span id="slot1" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" et.</div>
+        <div class="puzzle-sentence">• "<span id="slot2" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" dijital ortamlarda paylaşma.</div>
+        <div class="puzzle-sentence">• Güçlü "<span id="slot3" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" oluştur ve "2 aşamalı" şifreleme tekniğini kullan.</div>
+        <div class="puzzle-sentence">• Herkese açık olan yerlerde "<span id="slot4" class="puzzle-box"
+                ondrop="drop(event)" ondragover="allowDrop(event)"></span>" kullanma.</div>
+        <div class="puzzle-sentence">• Bilinmeyen kişilerden gelen "<span id="slot5" class="puzzle-box"
+                ondrop="drop(event)" ondragover="allowDrop(event)"></span>" asla tıklama.</div>
+        <div class="puzzle-sentence">• İnternetten "<span id="slot6" class="puzzle-box" ondrop="drop(event)"
+                ondragover="allowDrop(event)"></span>" yaparken sitelerin ve ödeme yöntemlerinin "<span id="slot7"
+                class="puzzle-box" ondrop="drop(event)" ondragover="allowDrop(event)"></span>" olmasına dikkat et.</div>
 
         <!-- Karışık kelimeler -->
         <div id="words" class="word-box">
@@ -146,14 +165,19 @@
             if (slot1 === "dikkat" && slot2 === "kişisel bilgileri" && slot3 === "şifreler" && slot4 === "Wi-Fi bağlantılarını" && slot5 === "e-postalara" && slot6 === "alışveriş" && slot7 === "güvenilir") {
                 feedback.textContent = "Tebrikler! Tüm cümleleri doğru tamamladınız.";
                 feedback.style.color = "green";
-                setTimeout(function() {
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
                     window.location.href = 'lastScene2.html'; // Yönlendirilmek istenilen sayfanın yolu
-                }, 2000); // 2 saniye sonra yönlendirilecek
+                }, 4000); // 2 saniye sonra yönlendirilecek
             } else {
                 feedback.textContent = "Bazı cümleler yanlış. Lütfen tekrar deneyin.";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 </body>
+
 </html>

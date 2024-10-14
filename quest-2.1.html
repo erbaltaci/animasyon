@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,48 +21,57 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
         }
+
         .question {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         button {
             margin: 5px;
             padding: 10px 20px;
             font-size: 16px;
             width: 100%;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         #nextPageButton {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 18px;
             display: none;
         }
+
         #image-container {
             margin-top: 20px;
             display: flex;
             justify-content: center;
             gap: 10px;
         }
+
         .small-image {
             width: 50px;
             height: 50px;
         }
+
         /* Bulmaca stili */
         .puzzle-box {
             margin: 20px auto;
@@ -70,7 +80,8 @@
             gap: 10px;
         }
 
-        .slot, .word {
+        .slot,
+        .word {
             width: 100px;
             height: 50px;
             border: 2px solid #333;
@@ -100,18 +111,19 @@
             display: none;
             margin-top: 20px;
         }
-        
+
         .highlight {
             color: green;
             font-weight: bold;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="question"> Kişisel Verileri Seç</h1>
         <p>Bulmacayı çözerek periye yardımcı ol. Ama dikkat et. Kelimeleri alfabetik sıraya göre dizmelisin.</p>
-        
+
         <!-- Birinci bulmaca alanı -->
         <div id="puzzle" class="puzzle-box">
             <div id="slot1" class="slot" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -140,7 +152,8 @@
         <!-- İkinci bulmaca alanı -->
         <div id="secondPuzzle">
             <h2 class="question">İkinci Bulmaca</h2>
-            <p>Kişinin <b>........</b>, <b>........</b>, <b>........</b> ve <b>........</b> özelliklerine ilişkin bilgiler kişisel veridir.</p>
+            <p>Kişinin <b>........</b>, <b>........</b>, <b>........</b> ve <b>........</b> özelliklerine ilişkin
+                bilgiler kişisel veridir.</p>
             <div class="form-group">
                 <input type="text" id="input1" class="form-control mb-2" placeholder="Birinci kelime">
                 <input type="text" id="input2" class="form-control mb-2" placeholder="İkinci kelime">
@@ -199,20 +212,26 @@
             var finalResult = document.getElementById('finalResult');
 
             if (input1 === "ailevi" && input2 === "ekonomik" && input3 === "fiziki" && input4 === "sosyal") {
+
                 feedback.textContent = "Tebrikler! Doğru cevabı buldunuz!";
                 feedback.style.color = "green";
-                setTimeout(function() {
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
                     window.location.href = 'scene-2.2.html'; // Yönlendirilmek istenilen sayfanın yolu
-                }, 2000); // 2 saniye sonra yönlendirilecek
-                
+                }, 4000); // 2 saniye sonra yönlendirilecek
+
 
                 // Boşlukları doldur ve yeşil renkte göster
                 finalResult.innerHTML = `Kişinin <span class="highlight">${input1}</span>, <span class="highlight">${input2}</span>, <span class="highlight">${input3}</span> ve <span class="highlight">${input4}</span> özelliklerine ilişkin bilgiler kişisel veridir.`;
             } else {
                 feedback.textContent = "Yanlış! Tekrar deneyin.";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 </body>
+
 </html>

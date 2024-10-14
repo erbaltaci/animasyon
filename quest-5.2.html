@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
         .container {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.9);
@@ -28,26 +30,32 @@
             width: 60%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .question {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         .answers {
             margin-bottom: 20px;
         }
+
         button {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 18px;
         }
+
         .feedback {
             margin-top: 20px;
             font-size: 18px;
             font-weight: bold;
         }
+
         #drag-drop-section {
             margin-top: 30px;
         }
+
         .pair-container {
             display: flex;
             justify-content: center;
@@ -55,6 +63,7 @@
             gap: 10px;
             margin-bottom: 20px;
         }
+
         .word {
             width: 120px;
             height: 40px;
@@ -66,6 +75,7 @@
             cursor: pointer;
             padding: 5px;
         }
+
         .drop-box {
             width: 150px;
             height: 40px;
@@ -77,6 +87,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- İkinci soru (Sürükle bırak) -->
@@ -178,14 +189,19 @@
             if (isCorrect) {
                 feedback.textContent = "Tebrikler! Tüm kelimeleri doğru eşleştirdiniz.";
                 feedback.style.color = "green";
-                setTimeout(function() {
+                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
                     window.location.href = 'lastScene5.html'; // Doğru sayfaya yönlendirin
-                }, 2000);
+                }, 4000);
             } else {
                 feedback.textContent = "Bazı kelimeler yanlış eşleştirildi. Tekrar deneyin!";
                 feedback.style.color = "red";
+                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+                Sound.play();
             }
         }
     </script>
 </body>
+
 </html>
