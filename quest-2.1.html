@@ -194,7 +194,12 @@
             if (slot1 === "ad-soyad" && slot2 === "doğum tarihi" && slot3 === "doğum yeri") {
                 feedback.textContent = "Tebrikler! Doğru cevabı buldunuz!";
                 feedback.style.color = "green";
-                document.getElementById("secondPuzzle").style.display = "block"; // İkinci bulmacayı göster
+               // document.getElementById("secondPuzzle").style.display = "block"; // İkinci bulmacayı göster
+               var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+                correctSound.play();
+                setTimeout(function () {
+                    window.location.href = 'scene-2.2.html'; // Yönlendirilmek istenilen sayfanın yolu
+                }, 4000); // 2 saniye sonra yönlendirilecek
             } else {
                 feedback.textContent = "Yanlış! Tekrar deneyin.";
                 feedback.style.color = "red";
