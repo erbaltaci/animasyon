@@ -158,34 +158,43 @@
         }
 
         // Cümlelerin doğruluğunu kontrol et
-        function checkSolution() {
-            var slot1 = document.getElementById('slot1').textContent.trim();
-            var slot2 = document.getElementById('slot2').textContent.trim();
-            var slot3 = document.getElementById('slot3').textContent.trim();
-            var slot4 = document.getElementById('slot4').textContent.trim();
-            var slot5 = document.getElementById('slot5').textContent.trim();
-            var slot6 = document.getElementById('slot6').textContent.trim();
-            var slot7 = document.getElementById('slot7').textContent.trim();
-            var slot8 = document.getElementById('slot8').textContent.trim();
+    function checkSolution() {
+    var slot1 = document.getElementById('slot1').textContent.trim();
+    var slot2 = document.getElementById('slot2').textContent.trim();
+    var slot3 = document.getElementById('slot3').textContent.trim();
+    var slot4 = document.getElementById('slot4').textContent.trim();
+    var slot5 = document.getElementById('slot5').textContent.trim();
+    var slot6 = document.getElementById('slot6').textContent.trim();
+    var slot7 = document.getElementById('slot7').textContent.trim();
+    var slot8 = document.getElementById('slot8').textContent.trim();
 
+    var feedback = document.getElementById('feedback');
 
-            var feedback = document.getElementById('feedback');
+    // Burada boşluk hatalarını düzelttik.
+    if (slot1 === "zor ve güçlü şifreler" && 
+        slot2 === "büyük harfler, küçük harfler, sayılar ve semboller" && 
+        slot3 === "8 karakter" && 
+        slot4 === "şifre yöneticisinde" && 
+        slot5 === "kullanmamalıyız" && 
+        slot6 === "Şifresiz" && 
+        slot7 === "tuş kilidi ve güçlü şifreler" && 
+        slot8 === "paylaşmamalıyız") {
+            
+        feedback.textContent = "Tebrikler! Tüm cümleleri doğru tamamladınız.";
+        feedback.style.color = "green";
+        var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
+        correctSound.play();
+        setTimeout(function () {
+            window.location.href = 'scene-3.2.html'; // Yönlendirilmek istenilen sayfanın yolu
+        }, 4000); // 4 saniye sonra yönlendirilecek
+    } else {
+        feedback.textContent = "Bazı cümleler yanlış. Lütfen tekrar deneyin.";
+        feedback.style.color = "red";
+        var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
+        Sound.play();
+    }
+}
 
-            if (slot1 === "zor ve güçlü şifreler" && slot2 === "büyük harfler, küçük harfler, sayılar ve semboller" && slot3 === "8 karakter" && slot4 === "şifre yöneticisinde" && slot5 === "kullanmamalıyız" && slot6 === "Şifresiz" && slot7 === "tuş kilidi ve  güçlü şifreler" && slot8 === "paylaşmamalıyız") {
-                feedback.textContent = "Tebrikler! Tüm cümleleri doğru tamamladınız.";
-                feedback.style.color = "green";
-                var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
-                correctSound.play();
-                setTimeout(function () {
-                    window.location.href = 'scene-3.2.html'; // Yönlendirilmek istenilen sayfanın yolu
-                }, 4000); // 2 saniye sonra yönlendirilecek
-            } else {
-                feedback.textContent = "Bazı cümleler yanlış. Lütfen tekrar deneyin.";
-                feedback.style.color = "red";
-                var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
-                Sound.play();
-            }
-        }
     </script>
 </body>
 
