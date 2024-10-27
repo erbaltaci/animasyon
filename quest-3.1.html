@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +9,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -29,30 +26,6 @@
             border-radius: 10px;
         }
 
-        .question {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        button {
-            margin: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            width: 100%;
-        }
-
-        .feedback {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
         .puzzle-sentence {
             margin-bottom: 20px;
             font-size: 18px;
@@ -65,7 +38,6 @@
             height: 30px;
             border: 2px solid #333;
             background-color: #f0f0f0;
-            display: inline-block;
             margin-left: 10px;
             vertical-align: middle;
         }
@@ -88,8 +60,9 @@
             cursor: pointer;
         }
 
-        .highlight {
-            color: green;
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
             font-weight: bold;
         }
     </style>
@@ -106,16 +79,15 @@
         <div class="puzzle-sentence">• Şifrelerimiz "<span id="slot2" class="puzzle-box" ondrop="drop(event)"
                 ondragover="allowDrop(event)"></span>" içermelidir.</div>
         <div class="puzzle-sentence">• Şifrelerimiz en az "<span id="slot3" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" uzunluğunda olmalıdır."
-        </div>
+                ondragover="allowDrop(event)"></span>" uzunluğunda olmalıdır.</div>
         <div class="puzzle-sentence">• Şifrelerimizi bir "<span id="slot4" class="puzzle-box" ondrop="drop(event)"
                 ondragover="allowDrop(event)"></span>" saklamalıyız.</div>
-        <div class="puzzle-sentence">• Oluşturduğumuz bir şifreyi her yerde"<span id="slot5" class="puzzle-box"
+        <div class="puzzle-sentence">• Oluşturduğumuz bir şifreyi her yerde "<span id="slot5" class="puzzle-box"
                 ondrop="drop(event)" ondragover="allowDrop(event)"></span>"</div>
         <div class="puzzle-sentence">• "<span id="slot6" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" olan Wi-Fi ağlarına bağlanmamalıyız. "</div>
+                ondragover="allowDrop(event)"></span>" olan Wi-Fi ağlarına bağlanmamalıyız.</div>
         <div class="puzzle-sentence">• Cihazlarımıza "<span id="slot7" class="puzzle-box" ondrop="drop(event)"
-                ondragover="allowDrop(event)"></span>" Koymalıyız.</div>
+                ondragover="allowDrop(event)"></span>" koymalıyız.</div>
         <div class="puzzle-sentence">• Şifrelerimizi "<span id="slot8" class="puzzle-box" ondrop="drop(event)"
                 ondragover="allowDrop(event)"></span>"</div>
 
@@ -125,12 +97,10 @@
             <div id="word2" class="word" draggable="true" ondragstart="drag(event)">kullanmamalıyız</div>
             <div id="word3" class="word" draggable="true" ondragstart="drag(event)">zor ve güçlü şifreler</div>
             <div id="word4" class="word" draggable="true" ondragstart="drag(event)">tuş kilidi ve güçlü şifreler</div>
-
             <div id="word5" class="word" draggable="true" ondragstart="drag(event)">Şifresiz</div>
             <div id="word6" class="word" draggable="true" ondragstart="drag(event)">paylaşmamalıyız</div>
-            <div id="word7" class="word" draggable="true" ondragstart="drag(event)">büyük harfler, küçük harfler,
-                sayılar ve semboller</div>
-            <div id="word8" class="word" draggable="true" ondragstart="drag(event)">şifre yöneticisinde </div>
+            <div id="word7" class="word" draggable="true" ondragstart="drag(event)">büyük harfler, küçük harfler, sayılar ve semboller</div>
+            <div id="word8" class="word" draggable="true" ondragstart="drag(event)">şifre yöneticisinde</div>
         </div>
 
         <!-- Kontrol butonu -->
@@ -140,7 +110,6 @@
     </div>
 
     <script>
-        // Sürükle-bırak işlemleri
         function allowDrop(ev) {
             ev.preventDefault();
         }
@@ -152,50 +121,54 @@
         function drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
-            if (ev.target.childNodes.length === 0) { // Aynı alana birden fazla kelime bırakılmasını engelle
+            if (ev.target.childNodes.length === 0) {
                 ev.target.appendChild(document.getElementById(data));
             }
         }
 
-        // Cümlelerin doğruluğunu kontrol et
-    function checkSolution() {
-    var slot1 = document.getElementById('slot1').textContent.trim();
-    var slot2 = document.getElementById('slot2').textContent.trim();
-    var slot3 = document.getElementById('slot3').textContent.trim();
-    var slot4 = document.getElementById('slot4').textContent.trim();
-    var slot5 = document.getElementById('slot5').textContent.trim();
-    var slot6 = document.getElementById('slot6').textContent.trim();
-    var slot7 = document.getElementById('slot7').textContent.trim();
-    var slot8 = document.getElementById('slot8').textContent.trim();
+        function checkSolution() {
+            const correctAnswers = [
+                "zor ve güçlü şifreler",
+                "büyük harfler, küçük harfler, sayılar ve semboller",
+                "8 karakter",
+                "şifre yöneticisinde",
+                "kullanmamalıyız",
+                "Şifresiz",
+                "tuş kilidi ve güçlü şifreler",
+                "paylaşmamalıyız"
+            ];
 
-    var feedback = document.getElementById('feedback');
+            let allCorrect = true;
+            for (let i = 1; i <= correctAnswers.length; i++) {
+                const userAnswer = document.getElementById(`slot${i}`).textContent.trim();
+                if (userAnswer !== correctAnswers[i - 1]) {
+                    allCorrect = false;
+                    break;
+                }
+            }
 
-    // Burada boşluk hatalarını düzelttik.
-    if (slot1 === "zor ve güçlü şifreler" && 
-        slot2 === "büyük harfler, küçük harfler, sayılar ve semboller" && 
-        slot3 === "8 karakter" && 
-        slot4 === "şifre yöneticisinde" && 
-        slot5 === "kullanmamalıyız" && 
-        slot6 === "Şifresiz" && 
-        slot7 === "tuş kilidi ve güçlü şifreler" && 
-        slot8 === "paylaşmamalıyız") {
-            
-        feedback.textContent = "Tebrikler! Tüm cümleleri doğru tamamladınız.";
-        feedback.style.color = "green";
-        var correctSound = new Audio('alkıs.mp3'); // Ses dosyasının yolu
-        correctSound.play();
-        setTimeout(function () {
-            window.location.href = 'scene-3.2.html'; // Yönlendirilmek istenilen sayfanın yolu
-        }, 4000); // 4 saniye sonra yönlendirilecek
-    } else {
-        feedback.textContent = "Bazı cümleler yanlış. Lütfen tekrar deneyin.";
-        feedback.style.color = "red";
-        var Sound = new Audio('yanlıs.mp3'); // Ses dosyasının yolu
-        Sound.play();
-    }
-}
-
+            const feedback = document.getElementById('feedback');
+            if (allCorrect) {
+                feedback.textContent = "Tebrikler! Tüm cümleleri doğru tamamladınız.";
+                feedback.style.color = "green";
+                try {
+                    var correctSound = new Audio('alkıs.mp3');
+                    correctSound.play();
+                } catch (e) {
+                    console.log("Ses dosyası bulunamadı.");
+                }
+                setTimeout(() => window.location.href = 'scene-3.2.html', 4000);
+            } else {
+                feedback.textContent = "Bazı cümleler yanlış. Lütfen tekrar deneyin.";
+                feedback.style.color = "red";
+                try {
+                    var Sound = new Audio('yanlıs.mp3');
+                    Sound.play();
+                } catch (e) {
+                    console.log("Ses dosyası bulunamadı.");
+                }
+            }
+        }
     </script>
 </body>
-
 </html>
